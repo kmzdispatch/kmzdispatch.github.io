@@ -26,25 +26,40 @@
   --red: #e40014;
   --red-light: #fff0f0;
   --orange: #ec5600;
-  --orange-light: #fff5f0;
   --purple: #ab4eff;
-  --purple-light: #f7f0ff;
   --radius: 16px;
   --radius-sm: 8px;
 }
 
-body { font-family: 'Figtree', sans-serif; background: var(--surface); color: var(--ink); line-height: 1.7; font-size: 16px; }
+body { font-family: 'Figtree', sans-serif; background: var(--surface); color: var(--ink); line-height: 1.7; font-size: 16px; overflow-x: hidden; }
 
 .top-banner { background: var(--blue-dark); color: white; text-align: center; padding: 12px 20px; font-size: 13px; font-weight: 500; position: sticky; top: 0; z-index: 999; line-height: 1.5; }
 .top-banner strong { font-weight: 700; }
 .top-banner .sub { opacity: 0.7; font-size: 12px; display: block; margin-top: 2px; }
 
-.page { max-width: 760px; margin: 0 auto; padding: 0 20px 100px; }
+.page { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+/* PROGRESS RAIL */
+.progress-rail { position: fixed; left: 22px; top: 130px; bottom: 130px; width: 3px; background: var(--border-light); border-radius: 4px; z-index: 500; }
+.progress-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(180deg, var(--blue), var(--purple)); border-radius: 4px; }
+@media(max-width: 980px){ .progress-rail { display: none; } }
+
+/* BANDS */
+.band { width: 100%; }
+.band-white { background: var(--surface); }
+.band-tint { background: var(--blue-light); }
+.band-alt { background: var(--surface-2); }
+.band-cream { background: linear-gradient(135deg, #fff8f0 0%, #fff3e8 100%); }
+.band-tint .mech-item, .band-tint .payment-flow { background: #ffffff; }
+.band-tint .quote { background: #ffffff; }
+
+.section-pad { padding: 64px 0; }
+.band-cream .section-pad { padding: 36px 0; }
 
 /* HERO */
-.hero { padding: 60px 0 48px; }
+.hero { padding: 60px 0 40px; }
 .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--blue-light); color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 24px; }
-.hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(28px, 5vw, 48px); font-weight: 900; line-height: 1.1; color: var(--ink); margin-bottom: 20px; letter-spacing: -0.02em; }
+.hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 900; line-height: 1.15; color: var(--ink); margin-bottom: 20px; letter-spacing: -0.02em; }
 .hero h1 .accent { color: var(--blue); }
 .hero-lead { font-size: 18px; color: var(--ink-2); line-height: 1.65; max-width: 600px; margin-bottom: 36px; }
 .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
@@ -53,60 +68,28 @@ body { font-family: 'Figtree', sans-serif; background: var(--surface); color: va
 .stat-box .num { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: var(--blue); display: block; line-height: 1; margin-bottom: 4px; }
 .stat-box .lbl { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
 
-/* SECTION */
-.section { padding: 52px 0; border-top: 1px solid var(--border-light); }
-.section-arrow { font-size: 13px; color: var(--ink-3); font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-.section-arrow::before { content: '↓'; color: var(--blue); }
-.section h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(20px, 3vw, 28px); font-weight: 900; color: var(--ink); margin-bottom: 20px; line-height: 1.2; letter-spacing: -0.01em; }
+/* SCARCITY STRIP */
+.scarcity-box { display: flex; gap: 18px; align-items: flex-start; }
+.scarcity-icon { font-size: 28px; line-height: 1; flex-shrink: 0; }
+.scarcity-box h3 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 900; color: var(--orange); margin-bottom: 6px; }
+.scarcity-box p { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+
+/* CHAPTER ROW */
+.chapter-row { display: grid; grid-template-columns: minmax(44px, 76px) 1fr; gap: 20px; align-items: start; }
+.chapter-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(30px, 6vw, 56px); line-height: 1; color: rgba(21,93,252,0.15); }
+.band-alt .chapter-num { color: rgba(29,31,39,0.1); }
+
+/* SECTION TEXT */
+.section h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(20px, 3vw, 28px); font-weight: 900; color: var(--ink); margin-bottom: 20px; line-height: 1.25; letter-spacing: -0.01em; }
 .section h2 .accent { color: var(--blue); }
 .section-body { font-size: 16px; color: var(--ink-2); line-height: 1.75; }
 .section-body p { margin-bottom: 14px; }
 .section-body p:last-child { margin-bottom: 0; }
 .emoji-label { font-size: 13px; font-weight: 700; color: var(--ink-3); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
 
-/* DARK CARD */
-.dark-card { background: var(--dark); border-radius: var(--radius); padding: 36px; color: white; margin: 24px 0; }
-.dark-card h3 { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; color: white; margin-bottom: 12px; }
-.dark-card p { color: rgba(255,255,255,0.72); font-size: 15px; line-height: 1.7; margin-bottom: 10px; }
-.dark-card p:last-child { margin-bottom: 0; }
-.dark-card strong { color: white; }
-.dark-card em { color: rgba(255,255,255,0.85); font-style: italic; }
-
 /* QUOTE */
 .quote { background: var(--blue-light); border-left: 4px solid var(--blue); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px 24px; margin: 24px 0; font-style: italic; color: var(--dark-2); font-size: 15px; line-height: 1.7; }
 .quote cite { display: block; margin-top: 8px; font-style: normal; font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.08em; }
-
-/* NEW MC HIGHLIGHT BOX */
-.new-mc-box {
-  background: linear-gradient(135deg, #fff8f0 0%, #fff3e8 100%);
-  border: 1.5px solid #ffd0a8;
-  border-radius: var(--radius);
-  padding: 28px 32px;
-  margin: 24px 0;
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-}
-.new-mc-icon {
-  font-size: 36px;
-  flex-shrink: 0;
-  line-height: 1;
-}
-.new-mc-box h4 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 17px;
-  font-weight: 900;
-  color: var(--orange);
-  margin-bottom: 8px;
-}
-.new-mc-box p {
-  font-size: 14px;
-  color: var(--ink-2);
-  line-height: 1.65;
-  margin-bottom: 8px;
-}
-.new-mc-box p:last-child { margin-bottom: 0; }
-.new-mc-box strong { color: var(--ink); }
 
 /* WHO GRID */
 .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
@@ -123,53 +106,6 @@ body { font-family: 'Figtree', sans-serif; background: var(--surface); color: va
 .who-dot.yes { background: var(--green); color: white; }
 .who-dot.no { background: var(--red); color: white; }
 
-/* CPM / TRPM CALCULATOR VISUAL */
-.profitability-visual {
-  background: var(--dark);
-  border-radius: var(--radius);
-  padding: 32px;
-  margin: 24px 0;
-  overflow: hidden;
-}
-.profitability-visual h4 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  font-weight: 900;
-  color: white;
-  margin-bottom: 6px;
-}
-.profitability-visual .pv-sub {
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 24px;
-}
-.pv-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-@media(max-width:480px){ .pv-grid { grid-template-columns: 1fr; } }
-.pv-box {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius-sm);
-  padding: 16px;
-  text-align: center;
-}
-.pv-box .pv-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
-.pv-box.cost .pv-label { color: #ff6568; }
-.pv-box.target .pv-label { color: #6260ff; }
-.pv-box.profit .pv-label { color: var(--green); }
-.pv-box .pv-value { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: white; display: block; line-height: 1; margin-bottom: 4px; }
-.pv-box .pv-desc { font-size: 11px; color: rgba(255,255,255,0.4); }
-.pv-bar-wrap { margin-top: 4px; }
-.pv-bar-label { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
-.pv-bar-track { background: rgba(255,255,255,0.08); border-radius: 4px; height: 8px; overflow: hidden; display: flex; gap: 2px; }
-.pv-bar-cost { background: #ff6568; height: 100%; border-radius: 4px 0 0 4px; width: 55%; }
-.pv-bar-profit { background: var(--green); height: 100%; border-radius: 0 4px 4px 0; width: 45%; }
-.pv-note { font-size: 12px; color: rgba(255,255,255,0.4); text-align: center; margin-top: 12px; }
-
 /* MECH STACK */
 .mech-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
 .mech-item { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 28px; display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: flex-start; }
@@ -178,68 +114,7 @@ body { font-family: 'Figtree', sans-serif; background: var(--surface); color: va
 .mech-tag { font-size: 10px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
 .mech-title { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 900; color: var(--ink); margin-bottom: 8px; }
 .mech-body { font-size: 14px; color: var(--ink-2); line-height: 1.65; margin-bottom: 12px; }
-.mech-outcome { display: inline-flex; align-items: center; gap: 6px; background: var(--green-light); color: var(--green); font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 20px; }
-.mech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-.mech-pill { background: var(--blue-light); color: var(--blue); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
-
-/* WEEKLY REPORT VISUAL */
-.weekly-report-visual {
-  background: var(--surface-2);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  padding: 24px;
-  margin-top: 16px;
-  overflow: hidden;
-}
-.wr-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.wr-title { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 900; color: var(--ink); }
-.wr-date { font-size: 11px; color: var(--ink-3); background: white; border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 4px 10px; }
-.wr-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 20px; }
-@media(max-width:480px){ .wr-stats { grid-template-columns: repeat(2,1fr); } }
-.wr-stat { background: white; border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 12px; text-align: center; }
-.wr-stat .ws-val { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: var(--ink); display: block; }
-.wr-stat .ws-val.green { color: var(--green); }
-.wr-stat .ws-val.blue { color: var(--blue); }
-.wr-stat .ws-lbl { font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
-.wr-chart { background: white; border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 16px; }
-.wr-chart-title { font-size: 11px; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
-.wr-bars { display: flex; align-items: flex-end; gap: 8px; height: 80px; }
-.wr-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
-.wr-bar {
-  width: 100%;
-  border-radius: 4px 4px 0 0;
-  position: relative;
-  min-height: 8px;
-}
-.wr-bar.market { background: var(--border-light); }
-.wr-bar.kmz { background: var(--blue); }
-.wr-bar-lbl { font-size: 9px; color: var(--ink-3); text-align: center; }
-.wr-legend { display: flex; gap: 16px; margin-top: 10px; }
-.wr-leg-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-3); }
-.wr-leg-dot { width: 10px; height: 10px; border-radius: 2px; }
-
-/* DEADHEAD VISUAL */
-.dh-visual {
-  background: white;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  padding: 24px;
-  margin-top: 16px;
-}
-.dh-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 16px; }
-.dh-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.dh-row:last-child { margin-bottom: 0; }
-.dh-label { font-size: 12px; font-weight: 600; color: var(--ink-2); width: 100px; flex-shrink: 0; }
-.dh-bar-wrap { flex: 1; background: var(--surface-2); border-radius: 4px; height: 24px; overflow: hidden; display: flex; align-items: center; }
-.dh-bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 10px; font-size: 11px; font-weight: 700; color: white; }
-.dh-val { font-size: 12px; font-weight: 700; color: var(--ink); width: 40px; text-align: right; flex-shrink: 0; }
+.mech-outcome { display: inline-flex; align-items: center; gap: 6px; background: var(--green-light); color: var(--green); font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 20px; margin-top: 12px; }
 
 /* OFFER BOX */
 .offer-box { background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%); border-radius: var(--radius); padding: 40px; margin: 28px 0; position: relative; overflow: hidden; }
@@ -260,54 +135,13 @@ body { font-family: 'Figtree', sans-serif; background: var(--surface); color: va
 .offer-math .math-lbl { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
 .offer-math .math-sep { font-size: 24px; color: rgba(255,255,255,0.2); font-weight: 300; }
 
-/* TIMELINE */
-.tl-wrap { display: flex; flex-direction: column; gap: 0; margin-top: 24px; border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; }
-.tl-row { display: grid; grid-template-columns: 100px 1fr; gap: 0; border-bottom: 1px solid var(--border-light); }
-.tl-row:last-child { border-bottom: none; }
-.tl-left { padding: 24px 20px; background: var(--surface-2); border-right: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; }
-.tl-phase-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 4px; }
-.tl-time { font-size: 12px; color: var(--ink-3); font-weight: 500; }
-.tl-right { padding: 24px; }
-.tl-right h4 { font-weight: 800; font-size: 15px; color: var(--ink); margin-bottom: 6px; }
-.tl-right p { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin-bottom: 10px; }
-.tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
-.tl-bullets li { font-size: 13px; color: var(--ink-2); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
-.tl-bullets li::before { content: '→'; color: var(--blue); font-weight: 700; flex-shrink: 0; font-size: 12px; margin-top: 1px; }
-@media(max-width:480px){ .tl-row { grid-template-columns: 1fr; } .tl-left { border-right: none; border-bottom: 1px solid var(--border-light); padding: 16px; flex-direction: row; gap: 8px; } }
-
-/* PRICING */
-.price-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-@media(max-width:540px){ .price-wrap { grid-template-columns: 1fr; } }
-.price-card { border-radius: var(--radius); padding: 32px 26px; border: 1px solid var(--border-light); background: var(--surface-2); position: relative; display: flex; flex-direction: column; }
-.price-card.star { background: var(--dark); border-color: var(--blue); border-width: 2px; }
-.price-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--blue); color: white; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; white-space: nowrap; }
-.price-icon { font-size: 28px; margin-bottom: 10px; }
-.price-tier-name { font-family: 'Montserrat', sans-serif; font-size: 19px; font-weight: 900; margin-bottom: 4px; }
-.price-card:not(.star) .price-tier-name { color: var(--ink); }
-.price-card.star .price-tier-name { color: white; }
-.price-amount { font-family: 'Montserrat', sans-serif; font-size: 34px; font-weight: 900; line-height: 1; margin: 10px 0 4px; }
-.price-card:not(.star) .price-amount { color: var(--blue); }
-.price-card.star .price-amount { color: white; }
-.price-amount-sub { font-size: 13px; font-weight: 400; }
-.price-card:not(.star) .price-amount-sub { color: var(--ink-3); }
-.price-card.star .price-amount-sub { color: rgba(255,255,255,0.5); }
-.price-desc { font-size: 13px; margin-bottom: 18px; line-height: 1.5; }
-.price-card:not(.star) .price-desc { color: var(--ink-3); }
-.price-card.star .price-desc { color: rgba(255,255,255,0.5); }
-.price-divider { height: 1px; margin-bottom: 16px; }
-.price-card:not(.star) .price-divider { background: var(--border-light); }
-.price-card.star .price-divider { background: rgba(255,255,255,0.1); }
-.price-list { list-style: none; display: flex; flex-direction: column; gap: 9px; flex: 1; }
-.price-list li { font-size: 13px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
-.price-card:not(.star) .price-list li { color: var(--ink-2); }
-.price-card.star .price-list li { color: rgba(255,255,255,0.75); }
-.price-list .chk { color: var(--green); font-weight: 800; flex-shrink: 0; }
-.price-upgrade-note { margin-top: 18px; background: rgba(21,93,252,0.08); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 12px; color: var(--blue); font-weight: 600; text-align: center; }
-.price-card.star .price-upgrade-note { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+/* GUARANTEE */
+.guarantee { background: #fffbeb; border: 1px solid #f0d878; border-radius: var(--radius); padding: 28px 32px; margin-top: 24px; }
+.guarantee h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 10px; }
+.guarantee p { font-size: 14px; color: var(--ink-2); line-height: 1.65; }
 
 /* PAYMENT FLOW */
 .payment-flow { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 32px; margin-top: 24px; }
-.payment-flow h4 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 900; color: var(--ink); margin-bottom: 20px; }
 .flow-steps { display: flex; flex-direction: column; gap: 0; }
 .flow-step { display: flex; gap: 16px; align-items: flex-start; padding-bottom: 20px; position: relative; }
 .flow-step:last-child { padding-bottom: 0; }
@@ -317,536 +151,305 @@ body { font-family: 'Figtree', sans-serif; background: var(--surface); color: va
 .flow-content strong { font-size: 14px; font-weight: 700; color: var(--ink); display: block; margin-bottom: 2px; }
 .flow-content span { font-size: 13px; color: var(--ink-3); line-height: 1.5; }
 
-/* GUARANTEE */
-.guarantee { background: #fffbeb; border: 1px solid #f0d878; border-radius: var(--radius); padding: 32px; margin-top: 24px; }
-.guarantee h3 { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: var(--ink); margin-bottom: 12px; }
-.guarantee p { font-size: 15px; color: var(--ink-2); line-height: 1.7; margin-bottom: 10px; }
-.guarantee p:last-child { margin-bottom: 0; }
-
-/* EFFORT */
-.effort-card { background: var(--dark); border-radius: var(--radius); padding: 36px; margin-top: 24px; }
-.effort-card h3 { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: white; margin-bottom: 14px; }
-.effort-card p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 12px; }
-.effort-card p:last-child { margin-bottom: 0; }
-.effort-card strong { color: white; }
-.effort-card em { color: rgba(255,255,255,0.85); font-style: italic; }
+/* SCARCITY REMINDER (pre-CTA) */
+.scarcity-reminder { display: inline-flex; align-items: center; gap: 8px; background: #fff3e8; color: var(--orange); font-size: 13px; font-weight: 700; padding: 8px 18px; border-radius: 20px; margin-bottom: 24px; }
 
 /* CTA */
-.cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); border-radius: var(--radius); padding: 52px 40px; text-align: center; margin-top: 52px; }
+.cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); border-radius: var(--radius); padding: 52px 40px; text-align: center; }
 .cta-section h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 4vw, 34px); font-weight: 900; color: white; margin-bottom: 12px; line-height: 1.2; letter-spacing: -0.01em; }
-.cta-section .cta-sub { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 36px; max-width: 460px; margin-left: auto; margin-right: auto; }
-.cta-steps-list { max-width: 400px; margin: 0 auto 36px; text-align: left; display: flex; flex-direction: column; gap: 14px; }
-.cta-step-item { display: flex; align-items: center; gap: 14px; color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; }
-.cta-step-circle { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: white; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cta-section .cta-sub { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto; }
 .cta-btn { display: inline-block; background: white; color: var(--blue-dark); font-size: 15px; font-weight: 800; padding: 18px 48px; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: transform 0.15s, box-shadow 0.15s; }
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
 .cta-note { color: rgba(255,255,255,0.45); font-size: 12px; margin-top: 16px; }
 
-.doc-footer { text-align: center; font-size: 12px; color: var(--ink-3); margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-light); line-height: 1.8; }
+.doc-footer { text-align: center; font-size: 12px; color: var(--ink-3); padding: 40px 0 60px; line-height: 1.8; }
 </style>
 </head>
 <body>
 
 <div class="top-banner">
-  ⚡ Limited spots available — <strong>your first 5 loads are completely free</strong>
+  ⚡ We only take on a limited number of new carrier partners at a time — <strong>your first 5 loads are completely free</strong>
   <span class="sub">$100 one-time access deposit · credited back on your first paid month · no lock-in contracts</span>
 </div>
 
-<div class="page">
+<div class="progress-rail" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-tag">🚛 KMZ Dispatch by KOMERZ — Carrier Partner Offer</div>
-    <h1>Your invitation to work with the <span class="accent">first intelligence-driven</span> dispatch service built for new owner-operators who want to run profitable — not just busy</h1>
-    <p class="hero-lead">Most dispatchers post your truck and hope for the best. We analyze your cost per mile, set your target rate, and position your truck in the lanes that actually make you money — from day one.</p>
-    <div class="hero-stats">
-      <div class="stat-box"><span class="num">6%</span><span class="lbl">1 truck rate</span></div>
-      <div class="stat-box"><span class="num">5%</span><span class="lbl">2+ trucks rate</span></div>
-      <div class="stat-box"><span class="num">5</span><span class="lbl">Free trial loads</span></div>
-      <div class="stat-box"><span class="num">$100</span><span class="lbl">Access deposit</span></div>
-    </div>
-  </div>
-
-  <!-- WHAT IS KMZ -->
-  <div class="section">
-    <div class="emoji-label">📈 What is KMZ Dispatch?</div>
-    <h2>The dispatch service that makes sure <span class="accent">every mile you drive is a profitable one</span></h2>
-    <div class="section-body">
-      <p>The trucking market has changed. Spot rates are unpredictable. Load boards are saturated. And most dispatchers — regardless of where they're based — are doing the exact same thing: posting your truck and accepting whatever the broker offers first.</p>
-      <p>That's not dispatching. That's load board gambling. And your margins pay the price.</p>
-      <p>KMZ Dispatch was built differently. Before we touch a load board, we calculate your real cost per mile, set your target rate per mile, and build a regional lane strategy based on where freight demand is strongest and carrier supply is lowest — right now, for your specific situation.</p>
-      <p><strong>The result: every load we take moves you toward profit. Not just movement. Actual profit.</strong></p>
-    </div>
-
-    <div class="quote">
-      "We don't just find you high-paying loads. We make sure the loads we find actually make sense for your operation — after fuel, after fixed costs, after everything."
-      <cite>— KMZ Dispatch, operated by KOMERZ International</cite>
-    </div>
-  </div>
-
-  <!-- WHO THIS IS FOR -->
-  <div class="section">
-    <div class="emoji-label">👀 First — let's make sure this is worth your time…</div>
-    <div class="section-arrow">Who this is and isn't for</div>
-    <h2>We partner with carriers for the long haul — especially the ones <span class="accent">just getting started 🤝</span></h2>
-    <div class="section-body">
-      <p>My intention is to build real, long-term partnerships with carriers — not just fill a few loads and disappear. My best partners have been with me for months. If you're expecting overnight miracles, this isn't the place.</p>
-      <p>But if you're a new MC holder in your first months — read on carefully. This was built for exactly where you are right now.</p>
-    </div>
-
-    <div class="new-mc-box">
-      <div class="new-mc-icon">🆕</div>
-      <div>
-        <h4>Specifically built for new MC holders — days 1 through 365</h4>
-        <p>The first year with a new authority is the hardest. Brokers won't call you back. Load boards feel overwhelming. Your truck sits while others move. You don't know if you're quoting the right rates or running the right lanes.</p>
-        <p><strong>KMZ Dispatch specializes in this exact period.</strong> We've studied the lanes, the broker relationships, and the rate dynamics that make the difference between a carrier who survives year one and one who doesn't. If your MC was granted yesterday — you are exactly who we want to work with.</p>
-      </div>
-    </div>
-
-    <div class="who-grid">
-      <div class="who-card no">
-        <div class="who-title">❌ This isn't for you if…</div>
-        <div class="who-item"><div class="who-dot no">✕</div><span>You expect instant results without consistent availability</span></div>
-        <div class="who-item"><div class="who-dot no">✕</div><span>You run reefer, hazmat, or flatbed specialized loads</span></div>
-        <div class="who-item"><div class="who-dot no">✕</div><span>Your MC authority is suspended or inactive</span></div>
-        <div class="who-item"><div class="who-dot no">✕</div><span>You plan to sit idle for weeks at a time</span></div>
-        <div class="who-item"><div class="who-dot no">✕</div><span>You want a dispatcher who just posts and waits</span></div>
-      </div>
-      <div class="who-card yes">
-        <div class="who-title">✅ This is exactly for you if…</div>
-        <div class="who-item"><div class="who-dot yes">✓</div><span>🆕 Brand new MC — even granted this week or last month</span></div>
-        <div class="who-item"><div class="who-dot yes">✓</div><span>🚛 Dry van OTR carrier — 1 to 3 trucks, MC within 12 months</span></div>
-        <div class="who-item"><div class="who-dot yes">✓</div><span>💰 You want to run profitable — not just keep moving</span></div>
-        <div class="who-item"><div class="who-dot yes">✓</div><span>🤝 You value a partner who understands your cost structure</span></div>
-        <div class="who-item"><div class="who-dot yes">✓</div><span>🎯 Ready to run consistently and build a real operation</span></div>
+<!-- HERO -->
+<div class="band band-white">
+  <div class="page">
+    <div class="hero">
+      <div class="hero-tag">🚛 KMZ Dispatch by KOMERZ — Carrier Partner Offer</div>
+      <h1>Your first year with a new MC doesn't have to mean <span class="accent">empty miles and ghosted calls</span></h1>
+      <p class="hero-lead">Most dispatchers post your truck and hope. We calculate your real cost per mile, set the rate you need to profit, and only send loads that clear it — from day one.</p>
+      <div class="hero-stats">
+        <div class="stat-box"><span class="num">6%</span><span class="lbl">1 truck rate</span></div>
+        <div class="stat-box"><span class="num">5%</span><span class="lbl">2+ trucks rate</span></div>
+        <div class="stat-box"><span class="num">5</span><span class="lbl">Free trial loads</span></div>
+        <div class="stat-box"><span class="num">$100</span><span class="lbl">Access deposit</span></div>
       </div>
     </div>
   </div>
-
-  <!-- THE SYSTEM -->
-  <div class="section">
-    <div class="emoji-label">⚙️ Our approach — what we actually do for your truck</div>
-    <div class="section-arrow">Introducing the Lane Intelligence Stack™</div>
-    <h2>The system that makes sure <span class="accent">every load covers your costs and builds your profit</span> 🎯</h2>
-    <div class="section-body">
-      <p>Every carrier we partner with gets three things working for them from day one. No other dispatcher combines profitability analysis, spatial intelligence, and weekly performance reporting into one system.</p>
-    </div>
-
-    <div class="mech-stack">
-
-      <div class="mech-item">
-        <div class="mech-num-box">01</div>
-        <div>
-          <div class="mech-tag">Analyze</div>
-          <div class="mech-title">Regional Lane Intelligence™</div>
-          <div class="mech-body">Before touching a load board, we run a full profitability audit for your operation. We calculate your real Cost Per Mile (CPM) — fuel, insurance, fixed costs, everything. Then we set your Target Rate Per Mile (TRPM) — the minimum you need to run profitably. We then identify which lanes and corridors hit that target right now, where carrier supply is low and demand is high, what seasonal patterns are coming in the next 60–90 days for your region, and whether you want to be home on weekends or keep rolling — because your route strategy should match your lifestyle.</div>
-          <div class="mech-tags">
-            <span class="mech-pill">CPM calculation</span>
-            <span class="mech-pill">TRPM setting</span>
-            <span class="mech-pill">Regional demand mapping</span>
-            <span class="mech-pill">Seasonal forecasting</span>
-            <span class="mech-pill">Weekend preference planning</span>
-          </div>
-          <div class="mech-outcome" style="margin-top:12px;">✓ You never take a load that doesn't make financial sense for your operation</div>
-        </div>
-      </div>
-
-      <!-- CPM / TRPM VISUAL -->
-      <div class="profitability-visual">
-        <h4>📊 Your profitability picture — what we calculate before your first load</h4>
-        <p class="pv-sub">Example carrier: dry van OTR, 1 truck, home state Texas</p>
-        <div class="pv-grid">
-          <div class="pv-box cost">
-            <div class="pv-label">Cost Per Mile (CPM)</div>
-            <span class="pv-value">$1.85</span>
-            <div class="pv-desc">Fuel + insurance + fixed costs per mile</div>
-          </div>
-          <div class="pv-box target">
-            <div class="pv-label">Target Rate Per Mile (TRPM)</div>
-            <span class="pv-value">$2.40</span>
-            <div class="pv-desc">Minimum rate to run profitably with margin</div>
-          </div>
-          <div class="pv-box profit">
-            <div class="pv-label">Profit Per Mile</div>
-            <span class="pv-value">$0.55</span>
-            <div class="pv-desc">Your real earnings after all costs</div>
-          </div>
-        </div>
-        <div class="pv-bar-wrap">
-          <div class="pv-bar-label"><span>Cost per mile</span><span>Profit margin</span></div>
-          <div class="pv-bar-track">
-            <div class="pv-bar-cost"></div>
-            <div class="pv-bar-profit"></div>
-          </div>
-        </div>
-        <p class="pv-note">We set your TRPM before finding any load. Every load we send you clears this number.</p>
-      </div>
-
-      <div class="mech-item">
-        <div class="mech-num-box">02</div>
-        <div>
-          <div class="mech-tag">Execute</div>
-          <div class="mech-title">The Freight Negotiation Protocol™</div>
-          <div class="mech-body">Every load is negotiated using your TRPM as the floor and current lane benchmarks as the target. We don't accept the first number a broker offers. We push for above-market rates on every call using live rate data and lane intelligence. We also actively minimize your deadhead miles from the very first load by planning pickup locations with your next lane in mind — this isn't a month-3 benefit, it's built into every dispatch decision we make from day one.</div>
-          <div class="mech-tags">
-            <span class="mech-pill">Rate negotiation above TRPM</span>
-            <span class="mech-pill">Deadhead minimization</span>
-            <span class="mech-pill">Broker communication</span>
-            <span class="mech-pill">All paperwork handled</span>
-          </div>
-          <div class="mech-outcome" style="margin-top:12px;">✓ Higher rate per mile + fewer empty miles = more money in your pocket</div>
-        </div>
-      </div>
-
-      <!-- DEADHEAD VISUAL -->
-      <div class="dh-visual">
-        <div class="dh-title">🗺️ Deadhead reduction — from load 1, not month 3</div>
-        <div class="dh-row">
-          <div class="dh-label">Avg dispatcher</div>
-          <div class="dh-bar-wrap"><div class="dh-bar-fill" style="width:68%;background:#ff6568;">68% loaded</div></div>
-          <div class="dh-val" style="color:#ff6568;">32% empty</div>
-        </div>
-        <div class="dh-row">
-          <div class="dh-label">KMZ Dispatch</div>
-          <div class="dh-bar-wrap"><div class="dh-bar-fill" style="width:85%;background:var(--blue);">85% loaded</div></div>
-          <div class="dh-val" style="color:var(--blue);">15% empty</div>
-        </div>
-        <div class="dh-row">
-          <div class="dh-label">Target (month 3)</div>
-          <div class="dh-bar-wrap"><div class="dh-bar-fill" style="width:92%;background:var(--green);">92% loaded</div></div>
-          <div class="dh-val" style="color:var(--green);">8% empty</div>
-        </div>
-      </div>
-
-      <div class="mech-item">
-        <div class="mech-num-box">03</div>
-        <div>
-          <div class="mech-tag">Optimize</div>
-          <div class="mech-title">Weekly Performance Intelligence™ — every Sunday</div>
-          <div class="mech-body">Every Sunday evening you receive your weekly report — ready for you when you start planning your week on Monday. Loads completed, revenue per mile vs your TRPM, deadhead percentage, best-performing lanes, and the plan for the week ahead. This isn't just a summary — it's your weekly intelligence brief that gets sharper every week as we learn your operation.</div>
-          <div class="mech-tags">
-            <span class="mech-pill">Delivered every Sunday</span>
-            <span class="mech-pill">Revenue vs TRPM tracking</span>
-            <span class="mech-pill">Lane performance analysis</span>
-            <span class="mech-pill">Next week plan included</span>
-          </div>
-          <div class="mech-outcome" style="margin-top:12px;">✓ Start every Monday knowing exactly where you stand and where you're going</div>
-        </div>
-      </div>
-
-      <!-- WEEKLY REPORT MOCKUP -->
-      <div class="weekly-report-visual">
-        <div class="wr-header">
-          <div class="wr-title">📋 KMZ Weekly Performance Report</div>
-          <div class="wr-date">Sunday, Week 4 — Delivered to your inbox</div>
-        </div>
-        <div class="wr-stats">
-          <div class="wr-stat"><span class="ws-val blue">5</span><span class="ws-lbl">Loads this week</span></div>
-          <div class="wr-stat"><span class="ws-val green">$2.61</span><span class="ws-lbl">Avg rate/mile</span></div>
-          <div class="wr-stat"><span class="ws-val">$2.40</span><span class="ws-lbl">Your TRPM target</span></div>
-          <div class="wr-stat"><span class="ws-val green">+8.7%</span><span class="ws-lbl">Above TRPM</span></div>
-        </div>
-        <div class="wr-chart">
-          <div class="wr-chart-title">Rate per mile — KMZ lanes vs market average</div>
-          <div class="wr-bars">
-            <div class="wr-bar-col">
-              <div class="wr-bar market" style="height:52px;"></div>
-              <div class="wr-bar-lbl">TX→IL</div>
-            </div>
-            <div class="wr-bar-col">
-              <div class="wr-bar kmz" style="height:70px;"></div>
-              <div class="wr-bar-lbl">TX→IL</div>
-            </div>
-            <div class="wr-bar-col">
-              <div class="wr-bar market" style="height:44px;"></div>
-              <div class="wr-bar-lbl">IL→OH</div>
-            </div>
-            <div class="wr-bar-col">
-              <div class="wr-bar kmz" style="height:62px;"></div>
-              <div class="wr-bar-lbl">IL→OH</div>
-            </div>
-            <div class="wr-bar-col">
-              <div class="wr-bar market" style="height:48px;"></div>
-              <div class="wr-bar-lbl">OH→TX</div>
-            </div>
-            <div class="wr-bar-col">
-              <div class="wr-bar kmz" style="height:68px;"></div>
-              <div class="wr-bar-lbl">OH→TX</div>
-            </div>
-          </div>
-          <div class="wr-legend">
-            <div class="wr-leg-item"><div class="wr-leg-dot" style="background:var(--border-light);"></div>Market average</div>
-            <div class="wr-leg-item"><div class="wr-leg-dot" style="background:var(--blue);"></div>KMZ rate achieved</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- THE OFFER -->
-  <div class="section">
-    <div class="emoji-label">🔥 The offer — here's exactly how this works</div>
-    <div class="section-arrow">The KMZ Trial System™</div>
-    <h2>5 free loads. $100 deposit. <span class="accent">You genuinely cannot lose.</span> ↓</h2>
-    <div class="section-body">
-      <p>We designed this trial to be the easiest yes in trucking. Here's exactly how it works:</p>
-    </div>
-
-    <div class="offer-box">
-      <h3>🚛 The KMZ Trial System™</h3>
-      <p class="offer-sub">Pay a one-time $100 access deposit. We dispatch your first 5 loads at zero commission. Then you choose your path — no pressure, no sales calls.</p>
-      <div class="offer-paths">
-        <div class="offer-path path-a">
-          <div class="path-label">✅ Path A — You love the results</div>
-          <div class="path-title">Let's keep going</div>
-          <div class="path-body">Your $100 deposit is credited in full toward your first paid month. You continue at 6% per load for one truck — or 5% if you bring us a second truck. No re-onboarding. We just keep rolling.</div>
-        </div>
-        <div class="offer-path path-b">
-          <div class="path-label">👋 Path B — It's not the right fit</div>
-          <div class="path-title">We part as friends</div>
-          <div class="path-body">You keep everything you earned across 5 loads — approximately $10,000 in gross revenue. We keep the $100 as a service fee for our work. You paid 1% for $10,000 generated. That's a fair deal for everyone.</div>
-        </div>
-      </div>
-      <div class="offer-math">
-        <div class="math-item"><span class="math-num">$100</span><span class="math-lbl">Access deposit</span></div>
-        <div class="math-sep">→</div>
-        <div class="math-item"><span class="math-num">5</span><span class="math-lbl">Free loads</span></div>
-        <div class="math-sep">→</div>
-        <div class="math-item"><span class="math-num">~$10K</span><span class="math-lbl">Gross revenue</span></div>
-        <div class="math-sep">→</div>
-        <div class="math-item"><span class="math-num">1%</span><span class="math-lbl">Worst case cost</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TIMELINE -->
-  <div class="section">
-    <div class="emoji-label">📆 The journey — what to expect together</div>
-    <div class="section-arrow">Your first 90 days with KMZ Dispatch</div>
-    <h2>Here's exactly what we build <span class="accent">together — step by step</span> ↓</h2>
-
-    <div class="tl-wrap">
-      <div class="tl-row">
-        <div class="tl-left"><div class="tl-phase-label">Phase 1</div><div class="tl-time">Day 1–2</div></div>
-        <div class="tl-right">
-          <h4>🗺️ Onboarding — mapping your operation from scratch</h4>
-          <p>We build your complete carrier profile — your real costs, your routes, your lifestyle preferences. Then we calculate your CPM, set your TRPM, and build your first regional lane strategy before touching a single load board.</p>
-          <ul class="tl-bullets">
-            <li>Full CPM audit — fuel, insurance, fixed costs calculated</li>
-            <li>TRPM set — your profitability floor established</li>
-            <li>Weekend preference captured — home time or keep rolling</li>
-            <li>First regional lane intelligence analysis completed</li>
-            <li>Broker packets submitted — you're live on day 2</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-left"><div class="tl-phase-label">Phase 2</div><div class="tl-time">Loads 1–5</div></div>
-        <div class="tl-right">
-          <h4>🚛 Free trial — full service, zero commission</h4>
-          <p>Five fully managed loads. Zero commission taken. Every load negotiated above your TRPM. Deadhead minimized from load one. Full paperwork handled. At the end you have real data to compare — and a real decision to make.</p>
-          <ul class="tl-bullets">
-            <li>Every load clears your TRPM — no exceptions</li>
-            <li>Rate comparison delivered — KMZ vs market average</li>
-            <li>Deadhead actively minimized on every pickup decision</li>
-            <li>First Sunday report delivered after week 1</li>
-            <li>Zero obligation to continue after load 5</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-left"><div class="tl-phase-label">Phase 3</div><div class="tl-time">Month 1–3</div></div>
-        <div class="tl-right">
-          <h4>🤝 Building — lanes, brokers, and rhythm</h4>
-          <p>This is where real momentum builds. We develop your preferred lane network, establish direct broker relationships for your corridors, and start identifying your most profitable recurring routes. Your TRPM gets refined as we learn your exact cost structure more precisely.</p>
-          <ul class="tl-bullets">
-            <li>3–5 preferred broker relationships established</li>
-            <li>Highest-earning lanes locked in and prioritized</li>
-            <li>TRPM refined based on real operational data</li>
-            <li>Weekly Sunday reports tracking your full profitability</li>
-            <li>Seasonal adjustment plan built for your home region</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-row">
-        <div class="tl-left"><div class="tl-phase-label">Phase 4</div><div class="tl-time">Month 3+</div></div>
-        <div class="tl-right">
-          <h4>📈 Scaling — turning your operation into a machine</h4>
-          <p>Routes are locked in. Brokers know your truck. Every week you're running above TRPM with minimal empty miles. Now we start thinking bigger — second truck planning, authority building, and making your operation run even when life gets complicated.</p>
-          <ul class="tl-bullets">
-            <li>Consistent rate per mile well above your TRPM target</li>
-            <li>Empty miles below 10% consistently</li>
-            <li>Second truck option — automatic upgrade to 5% rate</li>
-            <li>Operation resilient enough for planned home time</li>
-            <li>Revenue predictable enough to plan your life around it</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- HOW TO START -->
-  <div class="section">
-    <div class="emoji-label">📋 How to get started — the exact steps</div>
-    <div class="section-arrow">From first contact to first load in 24 hours</div>
-    <h2>Simple. Fast. <span class="accent">No surprises.</span> ↓</h2>
-
-    <div class="payment-flow">
-      <h4>⚡ The onboarding sequence</h4>
-      <div class="flow-steps">
-        <div class="flow-step">
-          <div class="flow-num">1</div>
-          <div class="flow-content">
-            <strong>Send us your MC number and truck details</strong>
-            <span>Email dispatch@kmzdispatch.com — MC#, truck type, home state, preferred operating radius. We verify your authority within a few hours.</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">2</div>
-          <div class="flow-content">
-            <strong>Book your 30-minute onboarding call</strong>
-            <span>We run through your costs, set your TRPM, capture your route preferences and weekend plans. calendly.com/dispatch-kmzdispatch/30min</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">3</div>
-          <div class="flow-content">
-            <strong>Pay your $100 access deposit via Stripe</strong>
-            <span>Takes 2 minutes from your phone. This unlocks the full service — including your CPM audit, TRPM calculation, and lane intelligence analysis.</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">4</div>
-          <div class="flow-content">
-            <strong>Sign the one-page dispatch agreement via DocuSign</strong>
-            <span>Simple, clear, no lock-in. States the trial terms, the $100 credit mechanism, and your ongoing rate — 6% for one truck, 5% when you add a second.</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">5</div>
-          <div class="flow-content">
-            <strong>We find your first load within 24 hours — trial begins</strong>
-            <span>Your lane analysis is built. We hit the boards with your TRPM as the floor. Your first load clears your costs. Trial is live.</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">6</div>
-          <div class="flow-content">
-            <strong>After load 5 — you choose your path</strong>
-            <span>Continue → $100 credited to month 1. Don't continue → keep all you earned, we keep the $100. Either way, you win.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PRICING -->
-  <div class="section">
-    <div class="emoji-label">📈 The investment — simple and completely transparent</div>
-    <div class="section-arrow">One rule: the more trucks you give us, the less you pay per load</div>
-    <h2>Grow with us — and we <span class="accent">reward you for it</span> ↓</h2>
-    <div class="section-body">
-      <p>This is an introductory offer for our founding carrier partners. The aim is simple — your first paid month covers your $100 deposit many times over. Our partners typically make their trial investment back on a single load.</p>
-    </div>
-
-    <div class="price-wrap">
-      <div class="price-card star">
-        <div class="price-badge">🚛 Start here</div>
-        <div class="price-icon">🔑</div>
-        <div class="price-tier-name">One Truck Partner</div>
-        <div class="price-amount">6% <span class="price-amount-sub">of gross per load</span></div>
-        <div class="price-desc">After your 5 free trial loads. $100 deposit credited back in full on month 1.</div>
-        <div class="price-divider"></div>
-        <ul class="price-list">
-          <li><span class="chk">✓</span> Full Lane Intelligence Stack™</li>
-          <li><span class="chk">✓</span> CPM audit + TRPM calculation</li>
-          <li><span class="chk">✓</span> Rate negotiation above TRPM every load</li>
-          <li><span class="chk">✓</span> Deadhead minimization from load 1</li>
-          <li><span class="chk">✓</span> Weekend preference route planning</li>
-          <li><span class="chk">✓</span> Weekly Sunday performance report</li>
-          <li><span class="chk">✓</span> All paperwork and broker comms handled</li>
-          <li><span class="chk">✓</span> 7-day exit notice — no lock-in</li>
-        </ul>
-        <div class="price-upgrade-note">Add a 2nd truck anytime → automatic upgrade to 5%</div>
-      </div>
-
-      <div class="price-card">
-        <div class="price-badge" style="background:var(--green);">💎 Best value</div>
-        <div class="price-icon">🚛🚛</div>
-        <div class="price-tier-name">Multi-Truck Partner</div>
-        <div class="price-amount">5% <span class="price-amount-sub">of gross per load</span></div>
-        <div class="price-desc">2 or more trucks under our management. Same $100 trial deposit to start.</div>
-        <div class="price-divider"></div>
-        <ul class="price-list">
-          <li><span class="chk">✓</span> Everything in One Truck</li>
-          <li><span class="chk">✓</span> Volume lane coordination across fleet</li>
-          <li><span class="chk">✓</span> Fleet-level deadhead optimization</li>
-          <li><span class="chk">✓</span> Individual TRPM per truck</li>
-          <li><span class="chk">✓</span> Combined weekly Sunday report — full fleet</li>
-          <li><span class="chk">✓</span> Priority load sourcing across all trucks</li>
-          <li><span class="chk">✓</span> Monthly fleet strategy call with us</li>
-          <li><span class="chk">✓</span> Scale path planning — 3rd truck and beyond</li>
-        </ul>
-        <div class="price-upgrade-note">Start with 1 truck at 6% → add truck 2 anytime → rate drops to 5% automatically</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- EFFORT -->
-  <div class="section">
-    <div class="emoji-label">🦾 The honest talk — what this actually takes</div>
-    <div class="section-arrow">Let's be real about what's required from both sides</div>
-    <h2>We use words like <span class="accent">easy, effortless and flow</span> — but that doesn't mean there's no work ↓</h2>
-    <div class="effort-card">
-      <h3>Here's the truth 🎯</h3>
-      <p>Trucking is not passive income. A truck sitting still makes nobody money — including you. And I won't pretend otherwise.</p>
-      <p>But here's what I will tell you — <strong>your job is to drive. My job is everything else.</strong> Finding the load, calculating if it clears your TRPM, negotiating the rate, talking to the broker, managing the paperwork, reporting your performance — that's on us.</p>
-      <p>The only things I need from you are <em>availability, communication, and consistency.</em> If you're sitting idle half the week, no dispatch service makes your operation profitable. But if you show up ready to run — <strong>we will find you loads that actually make financial sense for your operation.</strong></p>
-      <p>A huge amount of energy is required to get a plane off the ground. Much less is required to keep it in the air. <strong>Let's get your operation airborne — together.</strong></p>
-      <p>Ask yourself: <em>"What is it worth to have someone who actually calculates whether a load makes me money before putting me in the cab — rather than just posting my truck and hoping for the best?"</em></p>
-    </div>
-  </div>
-
-  <!-- GUARANTEE -->
-  <div class="section">
-    <div class="emoji-label">✅ Our guarantee — what we actually promise</div>
-    <div class="section-arrow">Backed by results — not words</div>
-    <h2>A guarantee that <span class="accent">actually means something</span> ↓</h2>
-
-    <div class="guarantee">
-      <h3>✅ The KMZ Performance Guarantee</h3>
-      <p>If after your 5 free trial loads, our average rate per mile has not cleared your TRPM on every single load — we return your $100 deposit in full. No questions, no friction, no hard feelings.</p>
-      <p>We calculate your profitability target before we touch a load board. We negotiate every load against that target. If we miss it — you get your money back. That's our commitment.</p>
-      <p><strong>What we don't guarantee</strong> — and won't pretend to — is that trucking will always be easy. Markets shift. Weather happens. Brokers play games. What we guarantee is that we will always be working from your real numbers — not guessing — and fighting for every dollar above your cost structure on every single load.</p>
-    </div>
-  </div>
-
-  <!-- CTA -->
-  <div class="cta-section">
-    <h2>Ready to start running profitable? 🚀</h2>
-    <p class="cta-sub">Send your MC number, truck type, and home state. We verify your authority and respond within 24 hours.</p>
-    <div class="cta-steps-list">
-      <div class="cta-step-item"><div class="cta-step-circle">1</div><span>Email your MC number, truck type, and home state</span></div>
-      <div class="cta-step-item"><div class="cta-step-circle">2</div><span>Book your 30-minute onboarding call at Calendly</span></div>
-      <div class="cta-step-item"><div class="cta-step-circle">3</div><span>Pay your $100 access deposit via Stripe — 2 minutes</span></div>
-      <div class="cta-step-item"><div class="cta-step-circle">4</div><span>Sign the one-page dispatch agreement via DocuSign</span></div>
-      <div class="cta-step-item"><div class="cta-step-circle">5</div><span>Your first load — above your TRPM — within 24 hours 🎯</span></div>
-    </div>
-    <a href="https://calendly.com/dispatch-kmzdispatch/30min" class="cta-btn">Start My Free Trial →</a>
-    <p class="cta-note">Book a call → calendly.com/dispatch-kmzdispatch/30min &nbsp;·&nbsp; dispatch@kmzdispatch.com 
-    </p>
-  </div>
-
-  <div class="doc-footer">
-    KMZ Dispatch is a freight dispatch service operated by KOMERZ — Société de Commerce International<br>
-    Djerba, Tunisia &nbsp;·&nbsp; dispatch@kmzdispatch.com &nbsp;·&nbsp; kmzdispatch.com<br>
-    All commissions and service fees invoiced through KOMERZ International
-  </div>
-
 </div>
+
+<!-- SCARCITY STRIP -->
+<div class="band band-cream">
+  <div class="page">
+    <div class="section-pad">
+      <div class="scarcity-box">
+        <div class="scarcity-icon">🟡</div>
+        <div>
+          <h3>Why we cap new carriers</h3>
+          <p>KMZ Dispatch is one dispatcher, not a call center. To give every carrier real lane strategy and real attention — not a ticket queue — we only bring on a small number of new partners at a time. When we're at capacity, we tell you upfront and let you know when the next spot opens.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 01: PROBLEM -->
+<div class="band band-tint">
+  <div class="page">
+    <div class="section-pad section">
+      <div class="chapter-row">
+        <div class="chapter-num">01</div>
+        <div>
+          <div class="emoji-label">📉 Why most new carriers struggle</div>
+          <h2>Load boards aren't a strategy. <span class="accent">They're a gamble your margins pay for.</span></h2>
+          <div class="section-body">
+            <p>Your first year with a new authority is the hardest part of trucking. Brokers won't answer. Load boards feel overwhelming. Every empty mile is money you'll never see again. Most dispatchers just post your truck and take whatever the broker offers first — that's not dispatching, that's guessing with your paycheck.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 02: MECHANISM -->
+<div class="band band-white">
+  <div class="page">
+    <div class="section-pad section">
+      <div class="chapter-row">
+        <div class="chapter-num">02</div>
+        <div>
+          <div class="emoji-label">🎯 How KMZ actually works</div>
+          <h2>We set your number <span class="accent">before we ever touch a load board.</span></h2>
+          <div class="section-body">
+            <p>Before anything else, we calculate your real cost per mile — fuel, insurance, fixed costs, everything — and set your target rate: the minimum you need to run profitable. Then we only dispatch loads that clear it.</p>
+          </div>
+          <div class="quote">
+            "We don't just find you high-paying loads. We make sure the loads we find actually make sense for your operation — after fuel, after fixed costs, after everything."
+            <cite>— KMZ Dispatch, operated by KOMERZ International</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 03: WHO THIS IS FOR -->
+<div class="band band-tint">
+  <div class="page">
+    <div class="section-pad section">
+      <div class="chapter-row">
+        <div class="chapter-num">03</div>
+        <div>
+          <div class="emoji-label">👀 Let's make sure this is a fit</div>
+          <h2>Built for the hardest year in trucking — <span class="accent">your first one.</span></h2>
+          <div class="section-body">
+            <p>If your MC was granted in the last 12 months and you're running dry van OTR with 1–3 trucks, this was built for exactly where you are right now.</p>
+          </div>
+          <div class="who-grid">
+            <div class="who-card no">
+              <div class="who-title">❌ Not a fit if…</div>
+              <div class="who-item"><div class="who-dot no">✕</div><span>You run reefer, hazmat, or flatbed</span></div>
+              <div class="who-item"><div class="who-dot no">✕</div><span>Your authority is suspended or inactive</span></div>
+              <div class="who-item"><div class="who-dot no">✕</div><span>You plan to sit idle for weeks at a time</span></div>
+            </div>
+            <div class="who-card yes">
+              <div class="who-title">✅ Exactly for you if…</div>
+              <div class="who-item"><div class="who-dot yes">✓</div><span>🆕 New MC — even granted last week</span></div>
+              <div class="who-item"><div class="who-dot yes">✓</div><span>🚛 Dry van OTR, 1–3 trucks</span></div>
+              <div class="who-item"><div class="who-dot yes">✓</div><span>🎯 Ready to run consistently</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 04: WHAT'S INCLUDED -->
+<div class="band band-white">
+  <div class="page">
+    <div class="section-pad section">
+      <div class="chapter-row">
+        <div class="chapter-num">04</div>
+        <div>
+          <div class="emoji-label">⚙️ What's actually included</div>
+          <h2>Three things working for your truck <span class="accent">from day one.</span></h2>
+          <div class="mech-stack">
+            <div class="mech-item">
+              <div class="mech-num-box">01</div>
+              <div>
+                <div class="mech-tag">Analyze</div>
+                <div class="mech-title">Cost & Target Rate</div>
+                <div class="mech-body">We calculate your real cost per mile and set the minimum rate you need to run profitable — before we touch a load board.</div>
+                <div class="mech-outcome">✓ You never take a load that doesn't make financial sense</div>
+              </div>
+            </div>
+            <div class="mech-item">
+              <div class="mech-num-box">02</div>
+              <div>
+                <div class="mech-tag">Execute</div>
+                <div class="mech-title">Rate Negotiation</div>
+                <div class="mech-body">Every load is negotiated above your target rate. We don't accept the first number a broker offers — we push for more, every time.</div>
+                <div class="mech-outcome">✓ Higher rate per mile, fewer wasted miles</div>
+              </div>
+            </div>
+            <div class="mech-item">
+              <div class="mech-num-box">03</div>
+              <div>
+                <div class="mech-tag">Track</div>
+                <div class="mech-title">One Dashboard</div>
+                <div class="mech-body">Loads, rate confirmations, PODs/BOLs, and settlements — all in one place, not scattered across email and text.</div>
+                <div class="mech-outcome">✓ No more chasing paperwork</div>
+              </div>
+            </div>
+            <div class="mech-item">
+              <div class="mech-num-box">04</div>
+              <div>
+                <div class="mech-tag">Optimize</div>
+                <div class="mech-title">Weekly Report</div>
+                <div class="mech-body">Every Sunday, a report showing loads completed, your rate vs your target, and the plan for next week.</div>
+                <div class="mech-outcome">✓ Know exactly where you stand, every Monday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 05: THE OFFER -->
+<div class="band band-alt">
+  <div class="page">
+    <div class="section-pad section">
+      <div class="chapter-row">
+        <div class="chapter-num">05</div>
+        <div>
+          <div class="emoji-label">🔥 Here's exactly how this works</div>
+          <h2>5 free loads. $100 deposit. <span class="accent">You genuinely cannot lose.</span></h2>
+          <div class="offer-box">
+            <h3>🚛 The KMZ Trial System™</h3>
+            <p class="offer-sub">Pay a one-time $100 access deposit. We dispatch your first 5 loads at zero commission. Then you choose your path — no pressure, no sales calls.</p>
+            <div class="offer-paths">
+              <div class="offer-path path-a">
+                <div class="path-label">✅ Path A — You love the results</div>
+                <div class="path-title">Let's keep going</div>
+                <div class="path-body">Your $100 deposit is credited in full toward your first paid month. You continue at 6% per load for one truck — or 5% with a second truck.</div>
+              </div>
+              <div class="offer-path path-b">
+                <div class="path-label">👋 Path B — It's not the right fit</div>
+                <div class="path-title">We part as friends</div>
+                <div class="path-body">You keep everything you earned across 5 loads — approximately $10,000 in gross revenue. We keep the $100 as a service fee.</div>
+              </div>
+            </div>
+            <div class="offer-math">
+              <div class="math-item"><span class="math-num">$100</span><span class="math-lbl">Access deposit</span></div>
+              <div class="math-sep">→</div>
+              <div class="math-item"><span class="math-num">5</span><span class="math-lbl">Free loads</span></div>
+              <div class="math-sep">→</div>
+              <div class="math-item"><span class="math-num">~$10K</span><span class="math-lbl">Gross revenue</span></div>
+              <div class="math-sep">→</div>
+              <div class="math-item"><span class="math-num">1%</span><span class="math-lbl">Worst case cost</span></div>
+            </div>
+          </div>
+          <div class="guarantee">
+            <h3>✅ The KMZ Guarantee</h3>
+            <p>If our average rate doesn't clear your target on all 5 trial loads, your $100 is refunded — no questions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 06: HOW TO START -->
+<div class="band band-tint">
+  <div class="page">
+    <div class="section-pad section">
+      <div class="chapter-row">
+        <div class="chapter-num">06</div>
+        <div>
+          <div class="emoji-label">📋 From first contact to first load</div>
+          <h2>Simple. Fast. <span class="accent">No surprises.</span></h2>
+          <div class="payment-flow">
+            <div class="flow-steps">
+              <div class="flow-step">
+                <div class="flow-num">1</div>
+                <div class="flow-content">
+                  <strong>Send your details</strong>
+                  <span>Email your MC#, truck type, and home state to dispatch@kmzdispatch.com — or book directly below.</span>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-num">2</div>
+                <div class="flow-content">
+                  <strong>Book a 30-minute call</strong>
+                  <span>We set your cost-per-mile, target rate, and lane plan.</span>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-num">3</div>
+                <div class="flow-content">
+                  <strong>Deposit, sign, dispatch</strong>
+                  <span>Pay the $100 deposit, sign the one-page agreement, and we find your first load within 24 hours.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSER / CTA -->
+<div class="band band-white">
+  <div class="page">
+    <div class="section-pad" style="text-align:center;">
+      <div class="scarcity-reminder">🟡 A limited number of onboarding spots are open right now</div>
+      <div class="cta-section">
+        <h2>Ready to run profitable? 🚀</h2>
+        <p class="cta-sub">Send your MC number, truck type, and home state — or book your call now to confirm a spot.</p>
+        <a href="https://calendly.com/dispatch-kmzdispatch/30min" class="cta-btn">Start My Free Trial →</a>
+        <p class="cta-note">Book a call → calendly.com/dispatch-kmzdispatch/30min &nbsp;·&nbsp; dispatch@kmzdispatch.com</p>
+      </div>
+    </div>
+    <div class="doc-footer">
+      KMZ Dispatch is a freight dispatch service operated by KOMERZ — Société de Commerce International<br>
+      Djerba, Tunisia &nbsp;·&nbsp; dispatch@kmzdispatch.com &nbsp;·&nbsp; kmzdispatch.com<br>
+      All commissions and service fees invoiced through KOMERZ International
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fill = document.getElementById('progressFill');
+  if(!fill) return;
+  function update(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var scrolled = window.scrollY;
+    var pct = h > 0 ? Math.min(100, Math.max(0,(scrolled/h)*100)) : 0;
+    fill.style.height = pct + '%';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+
 </body>
 </html>
