@@ -4,179 +4,230 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KMZ Dispatch — Carrier Partner Offer</title>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script data-goatcounter="https://kmzdispatch.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --blue: #155dfc;
-  --blue-dark: #0540ad;
-  --blue-light: #f2f5ff;
-  --dark: #1d1f27;
-  --dark-2: #1e2939;
-  --ink: #0a0c10;
-  --ink-2: #4a5565;
-  --ink-3: #6a7282;
-  --border: #d1d5dc;
-  --border-light: #e8eaf0;
-  --surface: #ffffff;
-  --surface-2: #f7f8fc;
-  --green: #00a447;
-  --green-light: #ebffed;
-  --red: #e40014;
-  --red-light: #fff0f0;
-  --orange: #ec5600;
+  --blue: #155eef;
+  --blue-dark: #0d3fc4;
+  --blue-light: rgba(21,94,239,0.14);
+  --gold: #ffc300;
+  --gold-light: rgba(255,195,0,0.14);
+  --dark: #1f4739;
+  --dark-2: #0a1a14;
+  --ink: #ffffff;
+  --ink-2: rgba(255,255,255,0.72);
+  --ink-3: rgba(255,255,255,0.52);
+  --border: rgba(255,255,255,0.18);
+  --border-light: rgba(255,255,255,0.12);
+  --surface: #0a0806;
+  --surface-2: #17130f;
+  --green: #37ca37;
+  --green-light: rgba(55,202,55,0.14);
+  --red: #ff4d5e;
+  --red-light: rgba(255,77,94,0.12);
+  --orange: #ff9142;
   --purple: #ab4eff;
   --radius: 16px;
   --radius-sm: 8px;
 }
 
-body { font-family: 'Figtree', sans-serif; background: var(--surface); color: var(--ink); line-height: 1.7; font-size: 16px; overflow-x: hidden; }
+body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(--ink); line-height: 1.7; font-size: 17px; overflow-x: hidden; padding-bottom: 78px; }
 
-.top-banner { background: var(--blue-dark); color: white; text-align: center; padding: 12px 20px; font-size: 13px; font-weight: 500; position: sticky; top: 0; z-index: 999; line-height: 1.5; }
+/* STICKY CTA BAR */
+.sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: #000000; border-top: 1px solid rgba(255,255,255,0.1); padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 18px; z-index: 998; box-shadow: 0 -6px 24px rgba(0,0,0,0.4); flex-wrap: wrap; }
+.sticky-cta .sc-text { color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 700; display: none; }
+@media(min-width:600px){ .sticky-cta .sc-text { display: inline; } }
+.sticky-cta .sc-text strong { color: white; }
+.cta-btn-sm { display: inline-block; background: white; color: var(--blue-dark); font-size: 14px; font-weight: 800; padding: 12px 28px; border-radius: 8px; text-decoration: none; box-shadow: 0 2px 12px rgba(0,0,0,0.3); transition: transform 0.15s; }
+.cta-btn-sm:hover { transform: translateY(-2px); }
+
+/* INLINE CTA */
+.inline-cta { text-align: center; margin: 36px 0 8px; }
+.inline-cta a { display: inline-block; background: var(--blue); color: white; font-weight: 800; font-size: 16px; padding: 16px 36px; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 18px rgba(21,94,239,0.4); transition: transform 0.15s, box-shadow 0.15s; }
+.inline-cta a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(21,94,239,0.45); }
+.inline-cta .note { display: block; font-size: 13px; color: var(--ink-3); margin-top: 10px; }
+
+/* TWO PATHS COMPARE */
+.band-green { background: linear-gradient(180deg, #0d2921 0%, #081712 100%); }
+.paths-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+@media(max-width:560px){ .paths-compare { grid-template-columns: 1fr; } }
+.compare-col { border-radius: var(--radius); padding: 28px; }
+.compare-col.stay { background: rgba(255,77,94,0.06); border: 2px dashed var(--red); }
+.compare-col.join { background: rgba(0,0,0,0.3); border: 2px solid var(--gold); }
+.compare-col h3 { font-family: 'Geist', sans-serif; font-weight: 900; font-size: 20px; margin-bottom: 16px; }
+.compare-col.stay h3 { color: var(--red); }
+.compare-col.join h3 { color: var(--gold); }
+.compare-item { font-size: 16px; line-height: 1.6; margin-bottom: 12px; padding-left: 22px; position: relative; }
+.compare-item:last-child { margin-bottom: 0; }
+.compare-col.stay .compare-item { color: var(--ink-2); }
+.compare-col.join .compare-item { color: rgba(255,255,255,0.9); }
+.compare-item::before { content: '—'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+.compare-col.join .compare-item::before { content: '✓'; color: var(--green); font-weight: 800; }
+
+/* RECAP CHECKLIST */
+.recap-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin: 28px 0; text-align: left; }
+@media(max-width:560px){ .recap-list { grid-template-columns: 1fr; } }
+.recap-item { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+.recap-check { width: 18px; height: 18px; border-radius: 50%; background: var(--green); color: white; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+
+.top-banner { background: var(--blue-dark); color: white; text-align: center; padding: 12px 20px; font-size: 14px; font-weight: 500; position: sticky; top: 0; z-index: 999; line-height: 1.5; }
 .top-banner strong { font-weight: 700; }
-.top-banner .sub { opacity: 0.7; font-size: 12px; display: block; margin-top: 2px; }
+.top-banner .sub { opacity: 0.75; font-size: 13px; display: block; margin-top: 2px; }
 
-.page { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+.page { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
 
 /* PROGRESS RAIL */
 .progress-rail { position: fixed; left: 22px; top: 130px; bottom: 130px; width: 3px; background: var(--border-light); border-radius: 4px; z-index: 500; }
-.progress-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(180deg, var(--blue), var(--purple)); border-radius: 4px; }
+.progress-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(180deg, var(--gold), var(--blue)); border-radius: 4px; }
 @media(max-width: 980px){ .progress-rail { display: none; } }
 
-/* BANDS */
+/* BANDS (hero glow + light contrast band only) */
 .band { width: 100%; }
-.band-white { background: var(--surface); }
-.band-tint { background: var(--blue-light); }
-.band-alt { background: var(--surface-2); }
-.band-cream { background: linear-gradient(135deg, #fff8f0 0%, #fff3e8 100%); }
-.band-tint .mech-item, .band-tint .payment-flow { background: #ffffff; }
-.band-tint .quote { background: #ffffff; }
+.hero-band {
+  background:
+    radial-gradient(circle at 50% 15%, rgba(255,195,0,0.16) 0%, rgba(255,195,0,0.03) 32%, transparent 62%),
+    linear-gradient(180deg, rgba(8,7,5,0.35) 0%, rgba(8,7,5,0.72) 65%, var(--surface) 100%),
+    url('assets/hero-bg.png');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+}
+.band-cream { background: #fafafa; --ink: #0a0c10; --ink-2: #4a5565; --ink-3: #6a7282; --border-light: #e8eaf0; --surface-2: #f7f8fc; }
 
 .section-pad { padding: 64px 0; }
 .band-cream .section-pad { padding: 36px 0; }
 
+/* CHAPTER CARD (boxed sections, cut from the black background) */
+.chapter-wrap { padding: 20px 0; }
+.chapter-card { background: var(--surface-2); border: 2px solid var(--gold); border-radius: 24px; padding: 44px; margin: 20px auto; max-width: 1140px; }
+@media(max-width:600px){ .chapter-card { padding: 28px 22px; border-radius: 18px; } }
+.chapter-label { display: inline-block; font-family: 'Geist', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(17px, 2.6vw, 21px); color: var(--gold); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 16px; line-height: 1.3; }
+.chapter-label .num { opacity: 0.6; font-weight: 700; margin-right: 6px; }
+
 /* HERO */
 .hero { padding: 60px 0 40px; }
-.hero-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--blue-light); color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 24px; }
-.hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 900; line-height: 1.15; color: var(--ink); margin-bottom: 20px; letter-spacing: -0.02em; }
-.hero h1 .accent { color: var(--blue); }
-.hero-lead { font-size: 18px; color: var(--ink-2); line-height: 1.65; max-width: 600px; margin-bottom: 36px; }
+.hero-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--gold-light); color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 16px; border-radius: 20px; margin-bottom: 20px; }
+.hero-audience { font-size: 17px; font-weight: 700; color: var(--ink-2); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.04em; }
+.hero h1 { font-family: 'Geist', sans-serif; font-size: clamp(36px, 7vw, 56px); font-weight: 900; line-height: 1.1; color: var(--ink); margin-bottom: 22px; letter-spacing: -0.02em; }
+.hero h1 .accent { color: var(--gold); }
+.hero-proof { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-light); color: var(--gold); font-size: 15px; font-weight: 700; padding: 9px 18px; border-radius: 20px; margin: 4px 0 22px; }
+.hero-lead { font-size: 20px; color: var(--ink-2); line-height: 1.6; max-width: 620px; margin-bottom: 20px; }
+.hero-step { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 36px; display: flex; align-items: center; gap: 8px; }
 .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 @media(max-width:560px){ .hero-stats { grid-template-columns: repeat(2,1fr); } }
-.stat-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 16px; text-align: center; }
-.stat-box .num { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; color: var(--blue); display: block; line-height: 1; margin-bottom: 4px; }
-.stat-box .lbl { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.stat-box { background: rgba(0,0,0,0.35); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 18px 14px; text-align: center; }
+.stat-box .num { font-family: 'Geist', sans-serif; font-size: 30px; font-weight: 900; color: var(--gold); display: block; line-height: 1; margin-bottom: 6px; }
+.stat-box .lbl { font-size: 13px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
 
 /* SCARCITY STRIP */
 .scarcity-box { display: flex; gap: 18px; align-items: flex-start; }
-.scarcity-icon { font-size: 28px; line-height: 1; flex-shrink: 0; }
-.scarcity-box h3 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 900; color: var(--orange); margin-bottom: 6px; }
-.scarcity-box p { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
-
-/* CHAPTER ROW */
-.chapter-row { display: grid; grid-template-columns: minmax(44px, 76px) 1fr; gap: 20px; align-items: start; }
-.chapter-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(30px, 6vw, 56px); line-height: 1; color: rgba(21,93,252,0.15); }
-.band-alt .chapter-num { color: rgba(29,31,39,0.1); }
+.scarcity-icon { font-size: 30px; line-height: 1; flex-shrink: 0; }
+.scarcity-box h3 { font-family: 'Geist', sans-serif; font-size: 18px; font-weight: 900; color: var(--orange); margin-bottom: 8px; }
+.scarcity-box p { font-size: 16px; color: var(--ink-2); line-height: 1.6; }
 
 /* SECTION TEXT */
-.section h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(20px, 3vw, 28px); font-weight: 900; color: var(--ink); margin-bottom: 20px; line-height: 1.25; letter-spacing: -0.01em; }
-.section h2 .accent { color: var(--blue); }
-.section-body { font-size: 16px; color: var(--ink-2); line-height: 1.75; }
+.section h2 { font-family: 'Geist', sans-serif; font-size: clamp(26px, 4.5vw, 38px); font-weight: 900; color: var(--ink); margin-bottom: 20px; line-height: 1.18; letter-spacing: -0.01em; }
+.section h2 .accent { color: var(--gold); }
+.section-body { font-size: 18px; color: var(--ink-2); line-height: 1.75; }
 .section-body p { margin-bottom: 14px; }
 .section-body p:last-child { margin-bottom: 0; }
-.emoji-label { font-size: 13px; font-weight: 700; color: var(--ink-3); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.emoji-label { font-size: 14px; font-weight: 700; color: var(--ink-3); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
 
 /* QUOTE */
-.quote { background: var(--blue-light); border-left: 4px solid var(--blue); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px 24px; margin: 24px 0; font-style: italic; color: var(--dark-2); font-size: 15px; line-height: 1.7; }
-.quote cite { display: block; margin-top: 8px; font-style: normal; font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.08em; }
+.quote { background: var(--gold-light); border-left: 4px solid var(--gold); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 22px 26px; margin: 24px 0; font-style: italic; color: var(--ink); font-size: 17px; line-height: 1.7; }
+.quote cite { display: block; margin-top: 10px; font-style: normal; font-size: 12px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; }
 
 /* WHO GRID */
 .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
 @media(max-width:540px){ .who-grid { grid-template-columns: 1fr; } }
 .who-card { border-radius: var(--radius); padding: 24px; border: 1px solid transparent; }
-.who-card.yes { background: var(--green-light); border-color: #b8f0c8; }
-.who-card.no { background: var(--red-light); border-color: #ffd0d4; }
-.who-card .who-title { font-weight: 800; font-size: 14px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.who-card.yes { background: var(--green-light); border-color: rgba(55,202,55,0.35); }
+.who-card.no { background: var(--red-light); border-color: rgba(255,77,94,0.35); }
+.who-card .who-title { font-weight: 800; font-size: 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 .who-card.yes .who-title { color: var(--green); }
 .who-card.no .who-title { color: var(--red); }
-.who-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-2); margin-bottom: 10px; line-height: 1.5; }
+.who-item { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; color: var(--ink-2); margin-bottom: 12px; line-height: 1.5; }
 .who-item:last-child { margin-bottom: 0; }
-.who-dot { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+.who-dot { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
 .who-dot.yes { background: var(--green); color: white; }
 .who-dot.no { background: var(--red); color: white; }
 
 /* MECH STACK */
 .mech-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
-.mech-item { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 28px; display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: flex-start; }
+.mech-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 28px; display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: flex-start; }
 @media(max-width:480px){ .mech-item { grid-template-columns: 1fr; } }
-.mech-num-box { width: 48px; height: 48px; background: var(--blue); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: white; flex-shrink: 0; }
-.mech-tag { font-size: 10px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
-.mech-title { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 900; color: var(--ink); margin-bottom: 8px; }
-.mech-body { font-size: 14px; color: var(--ink-2); line-height: 1.65; margin-bottom: 12px; }
-.mech-outcome { display: inline-flex; align-items: center; gap: 6px; background: var(--green-light); color: var(--green); font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 20px; margin-top: 12px; }
+.mech-num-box { width: 48px; height: 48px; background: var(--blue); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: 'Geist', sans-serif; font-size: 20px; font-weight: 900; color: white; flex-shrink: 0; }
+.mech-tag { font-size: 12px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+.mech-title { font-family: 'Geist', sans-serif; font-size: 19px; font-weight: 900; color: var(--ink); margin-bottom: 10px; }
+.mech-body { font-size: 16px; color: var(--ink-2); line-height: 1.65; margin-bottom: 12px; }
+.mech-outcome { display: inline-flex; align-items: center; gap: 6px; background: var(--green-light); color: var(--green); font-size: 13px; font-weight: 700; padding: 7px 14px; border-radius: 20px; margin-top: 12px; }
 
 /* OFFER BOX */
 .offer-box { background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%); border-radius: var(--radius); padding: 40px; margin: 28px 0; position: relative; overflow: hidden; }
-.offer-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--purple)); }
-.offer-box h3 { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: white; margin-bottom: 8px; }
-.offer-box .offer-sub { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 28px; }
-.offer-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-@media(max-width:520px){ .offer-paths { grid-template-columns: 1fr; } }
-.offer-path { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-sm); padding: 20px; }
-.offer-path .path-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
-.offer-path.path-a .path-label { color: var(--green); }
-.offer-path.path-b .path-label { color: #6a7282; }
-.offer-path .path-title { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 900; color: white; margin-bottom: 8px; }
-.offer-path .path-body { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
-.offer-math { background: rgba(21,93,252,0.15); border: 1px solid rgba(21,93,252,0.3); border-radius: var(--radius-sm); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.offer-math .math-item { text-align: center; }
-.offer-math .math-num { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; color: white; display: block; }
-.offer-math .math-lbl { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
-.offer-math .math-sep { font-size: 24px; color: rgba(255,255,255,0.2); font-weight: 300; }
+.offer-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--blue)); }
+.offer-box h3 { font-family: 'Geist', sans-serif; font-size: 26px; font-weight: 900; color: white; margin-bottom: 10px; }
+.offer-box .offer-sub { color: rgba(255,255,255,0.65); font-size: 16px; margin-bottom: 28px; }
+
+/* VALUE STACK */
+.value-stack { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
+.value-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-sm); padding: 15px 18px; }
+.value-row .v-label { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.4; }
+.value-row .v-amount { font-family: 'Geist', sans-serif; font-weight: 900; color: var(--gold); font-size: 17px; white-space: nowrap; flex-shrink: 0; }
+.value-total { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: rgba(255,195,0,0.12); border: 1px solid rgba(255,195,0,0.3); border-radius: var(--radius-sm); padding: 18px 20px; margin-top: 2px; }
+.value-total .v-label { font-size: 13px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+.value-total .v-amount { font-family: 'Geist', sans-serif; font-weight: 900; font-size: 24px; color: white; white-space: nowrap; flex-shrink: 0; }
 
 /* GUARANTEE */
-.guarantee { background: #fffbeb; border: 1px solid #f0d878; border-radius: var(--radius); padding: 28px 32px; margin-top: 24px; }
-.guarantee h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 10px; }
-.guarantee p { font-size: 14px; color: var(--ink-2); line-height: 1.65; }
+.guarantee { background: rgba(255,193,7,0.08); border: 1px solid rgba(255,193,7,0.35); border-radius: var(--radius); padding: 28px 32px; margin-top: 24px; }
+.guarantee h3 { font-family: 'Geist', sans-serif; font-size: 20px; font-weight: 900; color: var(--ink); margin-bottom: 12px; }
+.guarantee p { font-size: 16px; color: var(--ink-2); line-height: 1.65; }
 
 /* PAYMENT FLOW */
-.payment-flow { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 32px; margin-top: 24px; }
+.payment-flow { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 32px; margin-top: 24px; }
 .flow-steps { display: flex; flex-direction: column; gap: 0; }
-.flow-step { display: flex; gap: 16px; align-items: flex-start; padding-bottom: 20px; position: relative; }
+.flow-step { display: flex; gap: 16px; align-items: flex-start; padding-bottom: 22px; position: relative; }
 .flow-step:last-child { padding-bottom: 0; }
 .flow-step:not(:last-child)::before { content: ''; position: absolute; left: 14px; top: 30px; bottom: 0; width: 1px; background: var(--border-light); }
-.flow-num { width: 28px; height: 28px; border-radius: 50%; background: var(--blue); color: white; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; }
+.flow-num { width: 28px; height: 28px; border-radius: 50%; background: var(--blue); color: white; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; }
 .flow-content { flex: 1; padding-top: 4px; }
-.flow-content strong { font-size: 14px; font-weight: 700; color: var(--ink); display: block; margin-bottom: 2px; }
-.flow-content span { font-size: 13px; color: var(--ink-3); line-height: 1.5; }
+.flow-content strong { font-size: 16px; font-weight: 700; color: var(--ink); display: block; margin-bottom: 4px; }
+.flow-content span { font-size: 15px; color: var(--ink-3); line-height: 1.5; }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 20px; margin-top: 24px; }
+.faq-item { border-bottom: 1px solid var(--border-light); padding-bottom: 20px; }
+.faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+.faq-q { font-family: 'Geist', sans-serif; font-weight: 800; font-size: 17px; color: var(--ink); margin-bottom: 10px; }
+.faq-a { font-size: 16px; color: var(--ink-2); line-height: 1.65; }
 
 /* SCARCITY REMINDER (pre-CTA) */
-.scarcity-reminder { display: inline-flex; align-items: center; gap: 8px; background: #fff3e8; color: var(--orange); font-size: 13px; font-weight: 700; padding: 8px 18px; border-radius: 20px; margin-bottom: 24px; }
+.scarcity-reminder { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,145,66,0.14); color: var(--orange); font-size: 14px; font-weight: 700; padding: 9px 20px; border-radius: 20px; margin-bottom: 24px; }
 
 /* CTA */
 .cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); border-radius: var(--radius); padding: 52px 40px; text-align: center; }
-.cta-section h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 4vw, 34px); font-weight: 900; color: white; margin-bottom: 12px; line-height: 1.2; letter-spacing: -0.01em; }
-.cta-section .cta-sub { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto; }
-.cta-btn { display: inline-block; background: white; color: var(--blue-dark); font-size: 15px; font-weight: 800; padding: 18px 48px; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: transform 0.15s, box-shadow 0.15s; }
-.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
-.cta-note { color: rgba(255,255,255,0.45); font-size: 12px; margin-top: 16px; }
+.cta-section h2 { font-family: 'Geist', sans-serif; font-size: clamp(28px, 5.5vw, 42px); font-weight: 900; color: white; margin-bottom: 14px; line-height: 1.12; letter-spacing: -0.01em; }
+.cta-section .cta-sub { color: rgba(255,255,255,0.75); font-size: 18px; margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto; }
+.cta-btn { display: inline-block; background: white; color: var(--blue-dark); font-size: 16px; font-weight: 800; padding: 19px 50px; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.15s, box-shadow 0.15s; }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.35); }
+.cta-note { color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 16px; }
 
-.doc-footer { text-align: center; font-size: 12px; color: var(--ink-3); padding: 40px 0 60px; line-height: 1.8; }
+.doc-footer { text-align: center; font-size: 13px; color: var(--ink-3); padding: 40px 0 60px; line-height: 1.8; }
 
 /* FOUNDER */
-.founder-card { display: grid; grid-template-columns: 140px 1fr; gap: 28px; align-items: center; background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius); padding: 32px; margin-top: 24px; }
+.founder-card { display: grid; grid-template-columns: 140px 1fr; gap: 28px; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 32px; margin-top: 24px; }
 @media(max-width:560px){ .founder-card { grid-template-columns: 1fr; text-align: center; } }
-.founder-photo { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface-2); display: block; }
+.founder-photo { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); display: block; }
 @media(max-width:560px){ .founder-photo { margin: 0 auto; } }
-.founder-name { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 2px; }
-.founder-name .nickname { font-weight: 600; color: var(--ink-3); font-family: 'Figtree', sans-serif; }
-.founder-role { font-size: 12px; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
-.founder-bio { font-size: 14px; color: var(--ink-2); line-height: 1.7; margin-bottom: 18px; }
-.li-btn { display: inline-flex; align-items: center; gap: 8px; background: #0A66C2; color: white; font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 20px; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; }
+.founder-name { font-family: 'Geist', sans-serif; font-size: 20px; font-weight: 900; color: var(--ink); margin-bottom: 4px; }
+.founder-name .nickname { font-weight: 600; color: var(--ink-3); font-family: 'Geist', sans-serif; }
+.founder-role { font-size: 13px; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
+.founder-bio { font-size: 16px; color: var(--ink-2); line-height: 1.7; margin-bottom: 20px; }
+.li-btn { display: inline-flex; align-items: center; gap: 8px; background: #0A66C2; color: white; font-size: 14px; font-weight: 700; padding: 11px 20px; border-radius: 20px; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; }
 .li-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(10,102,194,0.35); }
-.li-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+.li-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -188,18 +239,25 @@ body { font-family: 'Figtree', sans-serif; background: var(--surface); color: va
 
 <div class="progress-rail" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
 
+<div class="sticky-cta">
+  <span class="sc-text">🟡 <strong>Onboarding spots are open now</strong> — first 2 loads free, no deposit</span>
+  <a href="https://calendly.com/dispatch-kmzdispatch/30min" class="cta-btn-sm">Start My Free Trial →</a>
+</div>
+
 <!-- HERO -->
-<div class="band band-white">
+<div class="band hero-band">
   <div class="page">
     <div class="hero">
-      <div class="hero-tag">🚛 KMZ Dispatch by KOMERZ — Carrier Partner Offer</div>
-      <h1>Your first year with a new MC doesn't have to mean <span class="accent">empty miles and ghosted calls</span></h1>
-      <p class="hero-lead">Most dispatchers post your truck and hope. We calculate your real cost per mile, set the rate you need to profit, and only send loads that clear it — from day one.</p>
+      <div class="hero-tag">🚛 KMZ Dispatch™ — Carrier Partner Offer</div>
+      <div class="hero-audience">For Owner-Operators In Their First Year With A New MC</div>
+      <h1>Know your real cost per mile, negotiate every rate above it, <span class="accent">AND run your first 2 loads completely free.</span></h1>
+      <p class="hero-lead">Stop guessing what a load is worth. Get the exact math before you accept anything — negotiated rates, zero commission on your first 2 loads, and a one-page agreement with no lock-in. Here's exactly how it works, no video required.</p>
+      <div class="hero-step">👉 Step 1 — Read the 2-minute breakdown below</div>
       <div class="hero-stats">
-        <div class="stat-box"><span class="num">6%</span><span class="lbl">1 truck rate</span></div>
-        <div class="stat-box"><span class="num">5%</span><span class="lbl">2+ trucks rate</span></div>
-        <div class="stat-box"><span class="num">2</span><span class="lbl">Free, no deposit</span></div>
-        <div class="stat-box"><span class="num">$100</span><span class="lbl">Unlocks 3 more</span></div>
+        <div class="stat-box"><span class="num">2</span><span class="lbl">Free loads, no deposit</span></div>
+        <div class="stat-box"><span class="num">$0</span><span class="lbl">Cost to start</span></div>
+        <div class="stat-box"><span class="num">0</span><span class="lbl">Commission on those 2</span></div>
+        <div class="stat-box"><span class="num">24h</span><span class="lbl">To your first load</span></div>
       </div>
     </div>
   </div>
@@ -220,17 +278,138 @@ body { font-family: 'Figtree', sans-serif; background: var(--surface); color: va
   </div>
 </div>
 
-<!-- CH 01: PROBLEM -->
-<div class="band band-tint">
+<!-- CH 01: WHO YOU'RE WORKING WITH -->
+<div class="chapter-wrap">
   <div class="page">
-    <div class="section-pad section">
-      <div class="chapter-row">
-        <div class="chapter-num">01</div>
+    <div class="chapter-card section">
+      <div class="chapter-label"><span class="num">01</span> Meet Your Dispatcher</div>
+      <div class="emoji-label">🙋 Before anything else — who you're actually emailing</div>
+      <h2>One dispatcher. <span class="accent">Not a call center.</span></h2>
+      <div class="section-body">
+        <p>No rotating reps, no ticket queue — you're working directly with the person who verifies every carrier on this list and calculates every rate.</p>
+      </div>
+      <div class="founder-card">
+        <img src="assets/founder.jpg" alt="Abdesslam Besrour, KMZ Dispatch" class="founder-photo">
         <div>
-          <div class="emoji-label">📉 Why most new carriers struggle</div>
-          <h2>Load boards aren't a strategy. <span class="accent">They're a gamble your margins pay for.</span></h2>
-          <div class="section-body">
-            <p>Your first year with a new authority is the hardest part of trucking. Brokers won't answer. Load boards feel overwhelming. Every empty mile is money you'll never see again. Most dispatchers just post your truck and take whatever the broker offers first — that's not dispatching, that's guessing with your paycheck.</p>
+          <div class="founder-name">Abdesslam Besrour <span class="nickname">(Slouma)</span></div>
+          <div class="founder-role">Founder, KMZ Dispatch</div>
+          <div class="founder-bio">Trained as a geomatics and spatial-data specialist (Master's, University of Tunis El Manar) — routes, regions, and location data are literally what I studied. Moved into international trade in 2022, running Komerz, and hold a certification specifically in export/import operations. That geomatics background is also the actual method behind how KMZ sets your rate: cost per mile, lane profitability, and deadhead risk are spatial problems before they're financial ones — mapping them out is what sets your target rate before a single load gets booked, not a guess. I also built the FMCSA verification pipeline behind this outreach myself — every carrier here was checked before you heard from me.</div>
+          <a href="https://www.linkedin.com/in/abdesslambesrour/" target="_blank" rel="noopener" class="li-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.558V9h3.556v11.452z"/></svg>
+            View LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="inline-cta">
+        <a href="https://calendly.com/dispatch-kmzdispatch/30min">Work With Me Directly →</a>
+        <span class="note">🟡 Onboarding spots are limited — one dispatcher, real capacity</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 02: THE PROBLEM -->
+<div class="chapter-wrap">
+  <div class="page">
+    <div class="chapter-card section">
+      <div class="chapter-label"><span class="num">02</span> The First-Year Trap</div>
+      <div class="emoji-label">📉 Why most new carriers struggle</div>
+      <h2>Load boards aren't a strategy. <span class="accent">They're a gamble your margins pay for.</span></h2>
+      <div class="section-body">
+        <p>Your first year with a new authority is the hardest part of trucking. Brokers won't answer. Load boards feel overwhelming. Every empty mile is money you'll never see again. Most dispatchers just post your truck and take whatever the broker offers first — that's not dispatching, that's guessing with your paycheck.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 03: THE METHOD -->
+<div class="chapter-wrap">
+  <div class="page">
+    <div class="chapter-card section">
+      <div class="chapter-label"><span class="num">03</span> The Math Behind The Rate</div>
+      <div class="emoji-label">🗺️ The method, not just the pitch</div>
+      <h2>Cost per mile is a <span class="accent">spatial problem before it's a financial one.</span></h2>
+      <div class="section-body">
+        <p>Every lane has a real distance, a real deadhead risk, and a real regional rate pattern — that's mapping and data work, not a guess. Before we ever touch a load board, we map your lanes, calculate your true cost per mile — fuel, insurance, fixed costs, deadhead — and set the minimum rate that keeps you profitable. Every load we send has to clear that number, not just whatever a broker offers first.</p>
+      </div>
+      <div class="quote">
+        "We don't just find you high-paying loads. We make sure the loads we find actually make sense for your operation — after fuel, after fixed costs, after everything."
+        <cite>— KMZ Dispatch, operated by KOMERZ International</cite>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 04: WHO THIS IS FOR -->
+<div class="chapter-wrap">
+  <div class="page">
+    <div class="chapter-card section">
+      <div class="chapter-label"><span class="num">04</span> Is This You?</div>
+      <div class="emoji-label">👀 Let's make sure this is a fit</div>
+      <h2>Built for the hardest year in trucking — <span class="accent">your first one.</span></h2>
+      <div class="section-body">
+        <p>If your MC was granted in the last 12 months and you're running dry van OTR with 1–3 trucks, this was built for exactly where you are right now.</p>
+      </div>
+      <div class="who-grid">
+        <div class="who-card no">
+          <div class="who-title">❌ Not a fit if…</div>
+          <div class="who-item"><div class="who-dot no">✕</div><span>You run reefer, hazmat, or flatbed</span></div>
+          <div class="who-item"><div class="who-dot no">✕</div><span>Your authority is suspended or inactive</span></div>
+          <div class="who-item"><div class="who-dot no">✕</div><span>You plan to sit idle for weeks at a time</span></div>
+        </div>
+        <div class="who-card yes">
+          <div class="who-title">✅ Exactly for you if…</div>
+          <div class="who-item"><div class="who-dot yes">✓</div><span>🆕 New MC — even granted last week</span></div>
+          <div class="who-item"><div class="who-dot yes">✓</div><span>🚛 Dry van OTR, 1–3 trucks</span></div>
+          <div class="who-item"><div class="who-dot yes">✓</div><span>🎯 Ready to run consistently</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 05: WHAT'S INCLUDED -->
+<div class="chapter-wrap">
+  <div class="page">
+    <div class="chapter-card section">
+      <div class="chapter-label"><span class="num">05</span> What's In The Box</div>
+      <div class="emoji-label">⚙️ What's actually included</div>
+      <h2>Three things working for your truck <span class="accent">from day one.</span></h2>
+      <div class="mech-stack">
+        <div class="mech-item">
+          <div class="mech-num-box">01</div>
+          <div>
+            <div class="mech-tag">Analyze</div>
+            <div class="mech-title">Cost & Target Rate</div>
+            <div class="mech-body">We calculate your real cost per mile and set the minimum rate you need to run profitable — before we touch a load board.</div>
+            <div class="mech-outcome">✓ You never take a load that doesn't make financial sense</div>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-num-box">02</div>
+          <div>
+            <div class="mech-tag">Execute</div>
+            <div class="mech-title">Rate Negotiation</div>
+            <div class="mech-body">Every load is negotiated above your target rate. We don't accept the first number a broker offers — we push for more, every time.</div>
+            <div class="mech-outcome">✓ Higher rate per mile, fewer wasted miles</div>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-num-box">03</div>
+          <div>
+            <div class="mech-tag">Track</div>
+            <div class="mech-title">One Dashboard</div>
+            <div class="mech-body">Loads, rate confirmations, PODs/BOLs, and settlements — all in one place, not scattered across email and text.</div>
+            <div class="mech-outcome">✓ No more chasing paperwork</div>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-num-box">04</div>
+          <div>
+            <div class="mech-tag">Optimize</div>
+            <div class="mech-title">Weekly Report</div>
+            <div class="mech-body">Every Sunday, a report showing loads completed, your rate vs your target, and the plan for next week.</div>
+            <div class="mech-outcome">✓ Know exactly where you stand, every Monday</div>
           </div>
         </div>
       </div>
@@ -238,196 +417,106 @@ body { font-family: 'Figtree', sans-serif; background: var(--surface); color: va
   </div>
 </div>
 
-<!-- CH 02: MECHANISM -->
-<div class="band band-white">
+<!-- CH 06: THE OFFER -->
+<div class="chapter-wrap">
   <div class="page">
-    <div class="section-pad section">
-      <div class="chapter-row">
-        <div class="chapter-num">02</div>
-        <div>
-          <div class="emoji-label">🎯 How KMZ actually works</div>
-          <h2>We set your number <span class="accent">before we ever touch a load board.</span></h2>
-          <div class="section-body">
-            <p>Before anything else, we calculate your real cost per mile — fuel, insurance, fixed costs, everything — and set your target rate: the minimum you need to run profitable. Then we only dispatch loads that clear it.</p>
-          </div>
-          <div class="quote">
-            "We don't just find you high-paying loads. We make sure the loads we find actually make sense for your operation — after fuel, after fixed costs, after everything."
-            <cite>— KMZ Dispatch, operated by KOMERZ International</cite>
+    <div class="chapter-card section">
+      <div class="chapter-label"><span class="num">06</span> The Offer, In Real Numbers</div>
+      <div class="emoji-label">🔥 Here's exactly how this works</div>
+      <h2>2 free loads. Then $100 unlocks 3 more. <span class="accent">Here's the real math.</span></h2>
+
+      <div class="mech-stack">
+        <div class="mech-item">
+          <div class="mech-num-box">01</div>
+          <div>
+            <div class="mech-tag">Phase 1</div>
+            <div class="mech-title">First 2 Loads — Zero Cost, Zero Commission</div>
+            <div class="mech-body">We dispatch your first 2 loads completely free — no deposit, no card on file. You see exactly how KMZ works before you risk a cent.</div>
+            <div class="mech-outcome">✓ Real loads, real rate negotiation, zero risk</div>
           </div>
         </div>
+        <div class="mech-item">
+          <div class="mech-num-box">02</div>
+          <div>
+            <div class="mech-tag">Phase 2</div>
+            <div class="mech-title">$100 Unlocks 3 More</div>
+            <div class="mech-body">Like what you see? A one-time $100 deposit unlocks 3 more loads at zero commission — 5 total. Refunded in full if our average rate doesn't clear your target.</div>
+            <div class="mech-outcome">✓ Covered by the KMZ Guarantee below</div>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-num-box">03</div>
+          <div>
+            <div class="mech-tag">Phase 3</div>
+            <div class="mech-title">After the Trial — You Choose</div>
+            <div class="mech-body">Continue and your $100 is credited toward your first paid month (6% for one truck, 5% for two or more). Or walk away — you keep what you earned, no hard feelings.</div>
+            <div class="mech-outcome">✓ No lock-in contracts, no pressure either way</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="offer-box">
+        <h3>💵 What this actually costs vs. what it's worth</h3>
+        <p class="offer-sub">Real numbers, not marketing math — this is arithmetic against our own published rates, not a made-up figure.</p>
+        <div class="value-stack">
+          <div class="value-row"><span class="v-label">Commission you'd normally pay on 5 loads (~$10,000 gross at 6%)</span><span class="v-amount">~$600</span></div>
+          <div class="value-row"><span class="v-label">Cost-per-mile & target rate analysis, every lane</span><span class="v-amount">Included</span></div>
+          <div class="value-row"><span class="v-label">Rate negotiation on every load</span><span class="v-amount">Included</span></div>
+          <div class="value-row"><span class="v-label">Paperwork, tracking, and weekly reporting</span><span class="v-amount">Included</span></div>
+        </div>
+        <div class="value-total">
+          <span class="v-label">Your actual cost for the full 5-load trial</span>
+          <span class="v-amount">$100</span>
+        </div>
+      </div>
+
+      <div class="guarantee">
+        <h3>✅ The KMZ Guarantee</h3>
+        <p>If our average rate doesn't clear your target across the 3 deposit-unlocked loads, your $100 is refunded — no questions. And the first 2 loads never cost you anything to find out, deposit or no deposit.</p>
+      </div>
+      <div class="inline-cta">
+        <a href="https://calendly.com/dispatch-kmzdispatch/30min">Claim Your First 2 Free Loads →</a>
+        <span class="note">No deposit today. No card. Just your MC number and 30 minutes.</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CH 03: WHO THIS IS FOR -->
-<div class="band band-tint">
+<!-- CH 07: HOW TO START -->
+<div class="chapter-wrap">
   <div class="page">
-    <div class="section-pad section">
-      <div class="chapter-row">
-        <div class="chapter-num">03</div>
-        <div>
-          <div class="emoji-label">👀 Let's make sure this is a fit</div>
-          <h2>Built for the hardest year in trucking — <span class="accent">your first one.</span></h2>
-          <div class="section-body">
-            <p>If your MC was granted in the last 12 months and you're running dry van OTR with 1–3 trucks, this was built for exactly where you are right now.</p>
-          </div>
-          <div class="who-grid">
-            <div class="who-card no">
-              <div class="who-title">❌ Not a fit if…</div>
-              <div class="who-item"><div class="who-dot no">✕</div><span>You run reefer, hazmat, or flatbed</span></div>
-              <div class="who-item"><div class="who-dot no">✕</div><span>Your authority is suspended or inactive</span></div>
-              <div class="who-item"><div class="who-dot no">✕</div><span>You plan to sit idle for weeks at a time</span></div>
-            </div>
-            <div class="who-card yes">
-              <div class="who-title">✅ Exactly for you if…</div>
-              <div class="who-item"><div class="who-dot yes">✓</div><span>🆕 New MC — even granted last week</span></div>
-              <div class="who-item"><div class="who-dot yes">✓</div><span>🚛 Dry van OTR, 1–3 trucks</span></div>
-              <div class="who-item"><div class="who-dot yes">✓</div><span>🎯 Ready to run consistently</span></div>
+    <div class="chapter-card section">
+      <div class="chapter-label"><span class="num">07</span> From Email To First Load</div>
+      <div class="emoji-label">📋 From first contact to first load</div>
+      <h2>Simple. Fast. <span class="accent">No surprises.</span></h2>
+      <div class="payment-flow">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div class="flow-content">
+              <strong>Send your details</strong>
+              <span>Email your MC#, truck type, and home state to dispatch@kmzdispatch.com — or book directly below.</span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CH 04: WHAT'S INCLUDED -->
-<div class="band band-white">
-  <div class="page">
-    <div class="section-pad section">
-      <div class="chapter-row">
-        <div class="chapter-num">04</div>
-        <div>
-          <div class="emoji-label">⚙️ What's actually included</div>
-          <h2>Three things working for your truck <span class="accent">from day one.</span></h2>
-          <div class="mech-stack">
-            <div class="mech-item">
-              <div class="mech-num-box">01</div>
-              <div>
-                <div class="mech-tag">Analyze</div>
-                <div class="mech-title">Cost & Target Rate</div>
-                <div class="mech-body">We calculate your real cost per mile and set the minimum rate you need to run profitable — before we touch a load board.</div>
-                <div class="mech-outcome">✓ You never take a load that doesn't make financial sense</div>
-              </div>
-            </div>
-            <div class="mech-item">
-              <div class="mech-num-box">02</div>
-              <div>
-                <div class="mech-tag">Execute</div>
-                <div class="mech-title">Rate Negotiation</div>
-                <div class="mech-body">Every load is negotiated above your target rate. We don't accept the first number a broker offers — we push for more, every time.</div>
-                <div class="mech-outcome">✓ Higher rate per mile, fewer wasted miles</div>
-              </div>
-            </div>
-            <div class="mech-item">
-              <div class="mech-num-box">03</div>
-              <div>
-                <div class="mech-tag">Track</div>
-                <div class="mech-title">One Dashboard</div>
-                <div class="mech-body">Loads, rate confirmations, PODs/BOLs, and settlements — all in one place, not scattered across email and text.</div>
-                <div class="mech-outcome">✓ No more chasing paperwork</div>
-              </div>
-            </div>
-            <div class="mech-item">
-              <div class="mech-num-box">04</div>
-              <div>
-                <div class="mech-tag">Optimize</div>
-                <div class="mech-title">Weekly Report</div>
-                <div class="mech-body">Every Sunday, a report showing loads completed, your rate vs your target, and the plan for next week.</div>
-                <div class="mech-outcome">✓ Know exactly where you stand, every Monday</div>
-              </div>
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div class="flow-content">
+              <strong>Book a 30-minute call</strong>
+              <span>We set your cost-per-mile, target rate, and lane plan.</span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CH 05: THE OFFER -->
-<div class="band band-alt">
-  <div class="page">
-    <div class="section-pad section">
-      <div class="chapter-row">
-        <div class="chapter-num">05</div>
-        <div>
-          <div class="emoji-label">🔥 Here's exactly how this works</div>
-          <h2>2 free loads. Then $100 unlocks 3 more. <span class="accent">You genuinely cannot lose.</span></h2>
-          <div class="offer-box">
-            <h3>🚛 The KMZ Trial System™</h3>
-            <p class="offer-sub">Your first 2 loads are completely free — no deposit, no card on file, nothing to sign away money for. If it's not for you, walk away with what you earned — no hard feelings. If it is, $100 unlocks 3 more loads at zero commission, and you're covered by the guarantee below either way.</p>
-            <div class="offer-paths">
-              <div class="offer-path path-a">
-                <div class="path-label">✅ Path A — You love the results</div>
-                <div class="path-title">Let's keep going</div>
-                <div class="path-body">Your $100 deposit is credited in full toward your first paid month. You continue at 6% per load for one truck — or 5% with a second truck.</div>
-              </div>
-              <div class="offer-path path-b">
-                <div class="path-label">👋 Path B — It's not the right fit</div>
-                <div class="path-title">We part as friends</div>
-                <div class="path-body">You keep everything you earned across your trial loads — free or deposit-unlocked. If you made it through all 5, that's approximately $10,000 in gross revenue, and we keep the $100 as a service fee. If you stopped after the first 2, you never paid us anything.</div>
-              </div>
-            </div>
-            <div class="offer-math">
-              <div class="math-item"><span class="math-num">2</span><span class="math-lbl">Free, no deposit</span></div>
-              <div class="math-sep">→</div>
-              <div class="math-item"><span class="math-num">$100</span><span class="math-lbl">Unlocks 3 more</span></div>
-              <div class="math-sep">→</div>
-              <div class="math-item"><span class="math-num">5</span><span class="math-lbl">Total trial loads</span></div>
-              <div class="math-sep">→</div>
-              <div class="math-item"><span class="math-num">~$10K</span><span class="math-lbl">Gross revenue</span></div>
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div class="flow-content">
+              <strong>Sign & dispatch — no deposit yet</strong>
+              <span>Sign the one-page agreement and we find your first load within 24 hours. Your first 2 loads run at zero cost and zero commission.</span>
             </div>
           </div>
-          <div class="guarantee">
-            <h3>✅ The KMZ Guarantee</h3>
-            <p>If our average rate doesn't clear your target across the 3 deposit-unlocked loads, your $100 is refunded — no questions. And the first 2 loads never cost you anything to find out, deposit or no deposit.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CH 06: HOW TO START -->
-<div class="band band-tint">
-  <div class="page">
-    <div class="section-pad section">
-      <div class="chapter-row">
-        <div class="chapter-num">06</div>
-        <div>
-          <div class="emoji-label">📋 From first contact to first load</div>
-          <h2>Simple. Fast. <span class="accent">No surprises.</span></h2>
-          <div class="payment-flow">
-            <div class="flow-steps">
-              <div class="flow-step">
-                <div class="flow-num">1</div>
-                <div class="flow-content">
-                  <strong>Send your details</strong>
-                  <span>Email your MC#, truck type, and home state to dispatch@kmzdispatch.com — or book directly below.</span>
-                </div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-num">2</div>
-                <div class="flow-content">
-                  <strong>Book a 30-minute call</strong>
-                  <span>We set your cost-per-mile, target rate, and lane plan.</span>
-                </div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-num">3</div>
-                <div class="flow-content">
-                  <strong>Sign & dispatch — no deposit yet</strong>
-                  <span>Sign the one-page agreement and we find your first load within 24 hours. Your first 2 loads run at zero cost and zero commission.</span>
-                </div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-num">4</div>
-                <div class="flow-content">
-                  <strong>Like what you see?</strong>
-                  <span>Anytime after load 2, pay the $100 deposit to unlock 3 more zero-commission loads — refunded if we don't hit your target rate.</span>
-                </div>
-              </div>
+          <div class="flow-step">
+            <div class="flow-num">4</div>
+            <div class="flow-content">
+              <strong>Like what you see?</strong>
+              <span>Anytime after load 2, pay the $100 deposit to unlock 3 more zero-commission loads — refunded if we don't hit your target rate.</span>
             </div>
           </div>
         </div>
@@ -436,44 +525,98 @@ body { font-family: 'Figtree', sans-serif; background: var(--surface); color: va
   </div>
 </div>
 
-<!-- CH 07: WHO'S BEHIND THIS -->
-<div class="band band-cream">
+<!-- CH 08: FAQ -->
+<div class="chapter-wrap">
+  <div class="page">
+    <div class="chapter-card section">
+      <div class="chapter-label"><span class="num">08</span> Straight Answers</div>
+      <div class="emoji-label">❓ Questions carriers actually ask</div>
+      <h2>Straight answers, <span class="accent">no fine print.</span></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Do I have to sign a long-term contract?</div>
+          <div class="faq-a">No. There's no lock-in contract at any point — during the trial or after. Continue month to month, or stop whenever it stops making sense.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What if I don't like it after the first 2 loads?</div>
+          <div class="faq-a">Walk away. You never paid a deposit for those 2 loads, so there's nothing to refund — and no hard feelings either way.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What if I use all 5 trial loads and decide not to continue?</div>
+          <div class="faq-a">You keep everything you earned — roughly $10,000 in gross revenue across 5 loads. We keep the $100 as a service fee. That's the full worst case.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How fast do I get my first load?</div>
+          <div class="faq-a">Within 24 hours of signing the one-page agreement, once we've set your cost-per-mile and target rate on the call.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">My MC is brand new — is that a problem?</div>
+          <div class="faq-a">No, that's exactly who this is built for. MCs granted in the last 12 months are the target, not an edge case.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What equipment and fleet size do you work with?</div>
+          <div class="faq-a">Dry van OTR, 1–3 trucks. Reefer, hazmat, and flatbed aren't a fit right now.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do you actually calculate my target rate?</div>
+          <div class="faq-a">Real cost-per-mile math grounded in route and lane data — fuel, insurance, fixed costs, and deadhead risk mapped per lane, not a flat industry-average guess. See the Method section above.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Who am I actually working with?</div>
+          <div class="faq-a">One dispatcher — me, Slouma — not a call center or a rotating team. See the intro section at the top of this page.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 09: TWO PATHS -->
+<div class="band band-green">
   <div class="page">
     <div class="section-pad section">
-      <div class="chapter-row">
-        <div class="chapter-num">07</div>
-        <div>
-          <div class="emoji-label">🙋 Who you're actually working with</div>
-          <h2>One dispatcher. <span class="accent">Not a call center.</span></h2>
-          <div class="section-body">
-            <p>No rotating reps, no ticket queue — you're working directly with the person who verifies every carrier on this list.</p>
-          </div>
-          <div class="founder-card">
-            <img src="assets/founder.jpg" alt="Abdesslam Besrour, KMZ Dispatch" class="founder-photo">
-            <div>
-              <div class="founder-name">Abdesslam Besrour <span class="nickname">(Slouma)</span></div>
-              <div class="founder-role">Founder, KMZ Dispatch</div>
-              <div class="founder-bio">Trained as a geomatics and spatial-data specialist (Master's, University of Tunis El Manar) — routes, regions, and location data are literally what I studied. Moved into international trade in 2022, running Komerz, and hold a certification specifically in export/import operations. Freight dispatch is where that background does something useful. I also built the FMCSA verification pipeline behind this outreach myself — every carrier here was checked before you heard from me.</div>
-              <a href="https://www.linkedin.com/in/abdesslambesrour/" target="_blank" rel="noopener" class="li-btn">
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.558V9h3.556v11.452z"/></svg>
-                View LinkedIn
-              </a>
-            </div>
-          </div>
+      <div class="chapter-label"><span class="num">09</span> Two Roads From Here</div>
+      <div class="emoji-label">⚡ Two ways this goes from here</div>
+      <h2>Keep guessing. <span class="accent">Or know your number before you say yes.</span></h2>
+      <div class="paths-compare">
+        <div class="compare-col stay">
+          <h3>❌ Stay solo</h3>
+          <div class="compare-item">You keep pricing lanes by gut feel, not real cost per mile.</div>
+          <div class="compare-item">You keep taking the first number a broker offers.</div>
+          <div class="compare-item">You keep wondering if a load even clears your fuel cost.</div>
+          <div class="compare-item">You keep doing the dispatcher's job on top of the driver's job.</div>
         </div>
+        <div class="compare-col join">
+          <h3>✅ Work with KMZ</h3>
+          <div class="compare-item">You know your real cost per mile before you accept a load.</div>
+          <div class="compare-item">Every load is negotiated above your target rate.</div>
+          <div class="compare-item">Your first 2 loads cost you nothing to test it.</div>
+          <div class="compare-item">You drive. I handle the loads, the rate, and the paperwork.</div>
+        </div>
+      </div>
+      <div class="inline-cta">
+        <a href="https://calendly.com/dispatch-kmzdispatch/30min">Start My Free Trial →</a>
+        <span class="note">🟡 Onboarding spots are limited — one dispatcher, real capacity</span>
       </div>
     </div>
   </div>
 </div>
 
 <!-- CLOSER / CTA -->
-<div class="band band-white">
+<div class="band band-cream">
   <div class="page">
     <div class="section-pad" style="text-align:center;">
       <div class="scarcity-reminder">🟡 A limited number of onboarding spots are open right now</div>
       <div class="cta-section">
         <h2>Ready to run profitable? 🚀</h2>
         <p class="cta-sub">Send your MC number, truck type, and home state — or book your call now to confirm a spot.</p>
+        <div class="recap-list">
+          <div class="recap-item"><div class="recap-check">✓</div><span>First 2 loads — completely free, no deposit</span></div>
+          <div class="recap-item"><div class="recap-check">✓</div><span>Real cost-per-mile & target rate, every lane</span></div>
+          <div class="recap-item"><div class="recap-check">✓</div><span>Every load negotiated above your target rate</span></div>
+          <div class="recap-item"><div class="recap-check">✓</div><span>$100 refunded if we miss your target rate</span></div>
+          <div class="recap-item"><div class="recap-check">✓</div><span>One dispatcher — me — not a call center</span></div>
+          <div class="recap-item"><div class="recap-check">✓</div><span>No lock-in contract, ever</span></div>
+        </div>
         <a href="https://calendly.com/dispatch-kmzdispatch/30min" class="cta-btn">Start My Free Trial →</a>
         <p class="cta-note">Book a call → calendly.com/dispatch-kmzdispatch/30min &nbsp;·&nbsp; dispatch@kmzdispatch.com</p>
       </div>
