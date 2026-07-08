@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -228,19 +229,42 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
 .li-btn { display: inline-flex; align-items: center; gap: 8px; background: #0A66C2; color: white; font-size: 14px; font-weight: 700; padding: 11px 20px; border-radius: 20px; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; }
 .li-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(10,102,194,0.35); }
 .li-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* LEAD FORM */
+.lead-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+@media(max-width:560px){ .lead-paths { grid-template-columns: 1fr; } }
+.lead-path { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; }
+.lead-path h3 { font-family: 'Geist', sans-serif; font-weight: 900; font-size: 18px; color: var(--ink); margin-bottom: 10px; }
+.lead-path-note { font-size: 15px; color: var(--ink-2); line-height: 1.5; margin-bottom: 18px; flex-grow: 1; }
+.lead-form { display: flex; flex-direction: column; gap: 10px; }
+.lead-form input { background: rgba(0,0,0,0.3); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 12px 14px; font-size: 15px; color: var(--ink); font-family: 'Geist', sans-serif; }
+.lead-form input::placeholder { color: var(--ink-3); }
+.lead-form input:focus { outline: none; border-color: var(--gold); }
+.form-submit { width: 100%; text-align: center; margin-top: 4px; border: none; cursor: pointer; font-family: 'Geist', sans-serif; }
+
+/* PRICE COMPARE (crossed-out cost vs $0) */
+.price-compare { display: flex; align-items: center; justify-content: center; gap: 28px; margin: 8px 0 32px; padding: 24px; background: rgba(0,0,0,0.25); border-radius: var(--radius); flex-wrap: wrap; }
+.price-old, .price-new { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.price-old-label, .price-new-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; margin-bottom: 8px; }
+.price-old-label { color: var(--ink-3); }
+.price-new-label { color: var(--gold); }
+.price-old-amount { font-family: 'Geist', sans-serif; font-size: clamp(28px, 5vw, 36px); font-weight: 900; color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 3px; line-height: 1; }
+.price-new-amount { font-family: 'Geist', sans-serif; font-size: clamp(48px, 9vw, 64px); font-weight: 900; color: var(--gold); line-height: 1; text-shadow: 0 0 24px rgba(255,195,0,0.35); }
+.price-arrow { font-size: 28px; color: var(--ink-3); font-weight: 700; }
+@media(max-width:560px){ .price-arrow { transform: rotate(90deg); } }
 </style>
 </head>
 <body>
 
 <div class="top-banner">
-  ⚡ We only take on a limited number of new carrier partners at a time — <strong>your first 2 loads are completely free, no deposit needed</strong>
-  <span class="sub">$100 unlocks 3 more loads after that · credited back on your first paid month · no lock-in contracts</span>
+  ⚡ We only take on a limited number of new carrier partners at a time — <strong>your first 5 loads are completely free — no deposit, ever</strong>
+  <span class="sub">Zero cost. Zero commission. Zero risk · no lock-in contracts</span>
 </div>
 
 <div class="progress-rail" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
 
 <div class="sticky-cta">
-  <span class="sc-text">🟡 <strong>Onboarding spots are open now</strong> — first 2 loads free, no deposit</span>
+  <span class="sc-text">🟡 <strong>Onboarding spots are open now</strong> — 5 loads free, no deposit</span>
   <a href="https://calendly.com/dispatch-kmzdispatch/30min" class="cta-btn-sm">Start My Free Trial →</a>
 </div>
 
@@ -250,13 +274,13 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
     <div class="hero">
       <div class="hero-tag">🚛 KMZ Dispatch™ — Carrier Partner Offer</div>
       <div class="hero-audience">For Owner-Operators In Their First Year With A New MC</div>
-      <h1>Know your real cost per mile, negotiate every rate above it, <span class="accent">AND run your first 2 loads completely free.</span></h1>
-      <p class="hero-lead">Stop guessing what a load is worth. Get the exact math before you accept anything — negotiated rates, zero commission on your first 2 loads, and a one-page agreement with no lock-in. Here's exactly how it works, no video required.</p>
+      <h1>Know your real cost per mile, negotiate every rate above it, <span class="accent">AND run your first 5 loads completely free.</span></h1>
+      <p class="hero-lead">Stop guessing what a load is worth. Get the exact math before you accept anything — negotiated rates, zero commission, and zero deposit on your first 5 loads. Here's exactly how it works, no video required.</p>
       <div class="hero-step">👉 Step 1 — Read the 2-minute breakdown below</div>
       <div class="hero-stats">
-        <div class="stat-box"><span class="num">2</span><span class="lbl">Free loads, no deposit</span></div>
+        <div class="stat-box"><span class="num">5</span><span class="lbl">Free loads, no deposit</span></div>
         <div class="stat-box"><span class="num">$0</span><span class="lbl">Cost to start</span></div>
-        <div class="stat-box"><span class="num">0</span><span class="lbl">Commission on those 2</span></div>
+        <div class="stat-box"><span class="num">0</span><span class="lbl">Commission on those 5</span></div>
         <div class="stat-box"><span class="num">24h</span><span class="lbl">To your first load</span></div>
       </div>
     </div>
@@ -308,11 +332,87 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
   </div>
 </div>
 
-<!-- CH 02: THE PROBLEM -->
+<!-- CH 02: LEAD FORM -->
 <div class="chapter-wrap">
   <div class="page">
     <div class="chapter-card section">
-      <div class="chapter-label"><span class="num">02</span> The First-Year Trap</div>
+      <div class="chapter-label"><span class="num">02</span> Let's Talk</div>
+      <div class="emoji-label">📞 Two ways to reach me — pick whichever's easier</div>
+      <h2>Leave your number, <span class="accent">or book a call yourself.</span></h2>
+      <div class="section-body">
+        <p>No wrong choice here. Leave your info and I'll call you directly, or grab a slot on my calendar yourself — either way it's a real 30-minute conversation, by phone or Google Meet, to see if we're a fit.</p>
+      </div>
+      <div class="lead-paths">
+        <div class="lead-path">
+          <h3>📱 I'll call you</h3>
+          <p class="lead-path-note">Leave your info below — I'll call within one business day.</p>
+          <form class="lead-form" action="https://formspree.io/f/xvzjnnde" method="POST">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="text" name="company" placeholder="Company name" required>
+            <input type="tel" name="phone" placeholder="Phone number" required>
+            <button type="submit" class="cta-btn-sm form-submit">Request a Call →</button>
+          </form>
+        </div>
+        <div class="lead-path">
+          <h3>📅 Book it yourself</h3>
+          <p class="lead-path-note">Pick a day and time that works for you on my calendar — 30 minutes, by phone or Google Meet.</p>
+          <a href="https://calendly.com/dispatch-kmzdispatch/30min" class="cta-btn-sm form-submit">Book a Call →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 03: TWO PATHS -->
+<div class="band band-green">
+  <div class="page">
+    <div class="section-pad section">
+      <div class="chapter-label"><span class="num">03</span> Two Roads From Here</div>
+      <div class="emoji-label">⚡ Two ways this goes from here</div>
+      <h2>Keep guessing. <span class="accent">Or know your number before you say yes.</span></h2>
+      <div class="paths-compare">
+        <div class="compare-col stay">
+          <h3>❌ Stay solo</h3>
+          <div class="compare-item">You keep pricing lanes by gut feel, not real cost per mile.</div>
+          <div class="compare-item">You keep taking the first number a broker offers.</div>
+          <div class="compare-item">You keep wondering if a load even clears your fuel cost.</div>
+          <div class="compare-item">You keep doing the dispatcher's job on top of the driver's job.</div>
+        </div>
+        <div class="compare-col join">
+          <h3>✅ Work with KMZ</h3>
+          <div class="compare-item">You know your real cost per mile before you accept a load.</div>
+          <div class="compare-item">Every load is negotiated above your target rate.</div>
+          <div class="compare-item">Your first 5 loads cost you nothing to test it.</div>
+          <div class="compare-item">You drive. I handle the loads, the rate, and the paperwork.</div>
+        </div>
+      </div>
+      <div class="inline-cta">
+        <a href="https://calendly.com/dispatch-kmzdispatch/30min">Start My Free Trial →</a>
+        <span class="note">🟡 Onboarding spots are limited — one dispatcher, real capacity</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 04: HOW IT WORKS INTRO -->
+<div class="chapter-wrap">
+  <div class="page">
+    <div class="chapter-card section">
+      <div class="chapter-label"><span class="num">04</span> How It Works</div>
+      <div class="emoji-label">👇 The full breakdown, in order</div>
+      <h2>Here's exactly what happens <span class="accent">from here.</span></h2>
+      <div class="section-body">
+        <p>Everything below walks through it in order: why your first year is the hardest, what you get from day one, and the offer in real numbers — plus straight answers to the questions carriers actually ask.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 05: THE PROBLEM -->
+<div class="chapter-wrap">
+  <div class="page">
+    <div class="chapter-card section">
+      <div class="chapter-label"><span class="num">05</span> The First-Year Trap</div>
       <div class="emoji-label">📉 Why most new carriers struggle</div>
       <h2>Load boards aren't a strategy. <span class="accent">They're a gamble your margins pay for.</span></h2>
       <div class="section-body">
@@ -322,57 +422,11 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
   </div>
 </div>
 
-<!-- CH 03: THE METHOD -->
+<!-- CH 06: WHAT'S INCLUDED -->
 <div class="chapter-wrap">
   <div class="page">
     <div class="chapter-card section">
-      <div class="chapter-label"><span class="num">03</span> The Math Behind The Rate</div>
-      <div class="emoji-label">🗺️ The method, not just the pitch</div>
-      <h2>Cost per mile is a <span class="accent">spatial problem before it's a financial one.</span></h2>
-      <div class="section-body">
-        <p>Every lane has a real distance, a real deadhead risk, and a real regional rate pattern — that's mapping and data work, not a guess. Before we ever touch a load board, we map your lanes, calculate your true cost per mile — fuel, insurance, fixed costs, deadhead — and set the minimum rate that keeps you profitable. Every load we send has to clear that number, not just whatever a broker offers first.</p>
-      </div>
-      <div class="quote">
-        "We don't just find you high-paying loads. We make sure the loads we find actually make sense for your operation — after fuel, after fixed costs, after everything."
-        <cite>— KMZ Dispatch, operated by KOMERZ International</cite>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CH 04: WHO THIS IS FOR -->
-<div class="chapter-wrap">
-  <div class="page">
-    <div class="chapter-card section">
-      <div class="chapter-label"><span class="num">04</span> Is This You?</div>
-      <div class="emoji-label">👀 Let's make sure this is a fit</div>
-      <h2>Built for the hardest year in trucking — <span class="accent">your first one.</span></h2>
-      <div class="section-body">
-        <p>If your MC was granted in the last 12 months and you're running dry van OTR with 1–3 trucks, this was built for exactly where you are right now.</p>
-      </div>
-      <div class="who-grid">
-        <div class="who-card no">
-          <div class="who-title">❌ Not a fit if…</div>
-          <div class="who-item"><div class="who-dot no">✕</div><span>You run reefer, hazmat, or flatbed</span></div>
-          <div class="who-item"><div class="who-dot no">✕</div><span>Your authority is suspended or inactive</span></div>
-          <div class="who-item"><div class="who-dot no">✕</div><span>You plan to sit idle for weeks at a time</span></div>
-        </div>
-        <div class="who-card yes">
-          <div class="who-title">✅ Exactly for you if…</div>
-          <div class="who-item"><div class="who-dot yes">✓</div><span>🆕 New MC — even granted last week</span></div>
-          <div class="who-item"><div class="who-dot yes">✓</div><span>🚛 Dry van OTR, 1–3 trucks</span></div>
-          <div class="who-item"><div class="who-dot yes">✓</div><span>🎯 Ready to run consistently</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CH 05: WHAT'S INCLUDED -->
-<div class="chapter-wrap">
-  <div class="page">
-    <div class="chapter-card section">
-      <div class="chapter-label"><span class="num">05</span> What's In The Box</div>
+      <div class="chapter-label"><span class="num">06</span> What's In The Box</div>
       <div class="emoji-label">⚙️ What's actually included</div>
       <h2>Three things working for your truck <span class="accent">from day one.</span></h2>
       <div class="mech-stack">
@@ -417,21 +471,21 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
   </div>
 </div>
 
-<!-- CH 06: THE OFFER -->
+<!-- CH 07: THE OFFER -->
 <div class="chapter-wrap">
   <div class="page">
     <div class="chapter-card section">
-      <div class="chapter-label"><span class="num">06</span> The Offer, In Real Numbers</div>
+      <div class="chapter-label"><span class="num">07</span> The Offer, In Real Numbers</div>
       <div class="emoji-label">🔥 Here's exactly how this works</div>
-      <h2>2 free loads. Then $100 unlocks 3 more. <span class="accent">Here's the real math.</span></h2>
+      <h2>5 free loads. Zero cost. <span class="accent">That's the whole offer.</span></h2>
 
       <div class="mech-stack">
         <div class="mech-item">
           <div class="mech-num-box">01</div>
           <div>
             <div class="mech-tag">Phase 1</div>
-            <div class="mech-title">First 2 Loads — Zero Cost, Zero Commission</div>
-            <div class="mech-body">We dispatch your first 2 loads completely free — no deposit, no card on file. You see exactly how KMZ works before you risk a cent.</div>
+            <div class="mech-title">Your First 5 Loads — Zero Cost, Zero Commission</div>
+            <div class="mech-body">We dispatch your first 5 loads completely free — no deposit, no card on file, ever. You see exactly how KMZ works with real loads and real rate negotiation, before you spend a cent.</div>
             <div class="mech-outcome">✓ Real loads, real rate negotiation, zero risk</div>
           </div>
         </div>
@@ -439,17 +493,8 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
           <div class="mech-num-box">02</div>
           <div>
             <div class="mech-tag">Phase 2</div>
-            <div class="mech-title">$100 Unlocks 3 More</div>
-            <div class="mech-body">Like what you see? A one-time $100 deposit unlocks 3 more loads at zero commission — 5 total. Refunded in full if our average rate doesn't clear your target.</div>
-            <div class="mech-outcome">✓ Covered by the KMZ Guarantee below</div>
-          </div>
-        </div>
-        <div class="mech-item">
-          <div class="mech-num-box">03</div>
-          <div>
-            <div class="mech-tag">Phase 3</div>
-            <div class="mech-title">After the Trial — You Choose</div>
-            <div class="mech-body">Continue and your $100 is credited toward your first paid month (6% for one truck, 5% for two or more). Or walk away — you keep what you earned, no hard feelings.</div>
+            <div class="mech-title">After Load 5 — You Choose</div>
+            <div class="mech-body">Like what you see? Continue as a standard paying client — 6% commission for one truck, 5% for two or more. Or walk away — you keep everything you earned, no bill, no hard feelings.</div>
             <div class="mech-outcome">✓ No lock-in contracts, no pressure either way</div>
           </div>
         </div>
@@ -458,68 +503,32 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
       <div class="offer-box">
         <h3>💵 What this actually costs vs. what it's worth</h3>
         <p class="offer-sub">Real numbers, not marketing math — this is arithmetic against our own published rates, not a made-up figure.</p>
+        <div class="price-compare">
+          <div class="price-old">
+            <span class="price-old-label">Normally costs you</span>
+            <span class="price-old-amount">~$600</span>
+          </div>
+          <div class="price-arrow">→</div>
+          <div class="price-new">
+            <span class="price-new-label">Your cost, first 5 loads</span>
+            <span class="price-new-amount">$0</span>
+          </div>
+        </div>
         <div class="value-stack">
           <div class="value-row"><span class="v-label">Commission you'd normally pay on 5 loads (~$10,000 gross at 6%)</span><span class="v-amount">~$600</span></div>
           <div class="value-row"><span class="v-label">Cost-per-mile & target rate analysis, every lane</span><span class="v-amount">Included</span></div>
           <div class="value-row"><span class="v-label">Rate negotiation on every load</span><span class="v-amount">Included</span></div>
           <div class="value-row"><span class="v-label">Paperwork, tracking, and weekly reporting</span><span class="v-amount">Included</span></div>
         </div>
-        <div class="value-total">
-          <span class="v-label">Your actual cost for the full 5-load trial</span>
-          <span class="v-amount">$100</span>
-        </div>
       </div>
 
       <div class="guarantee">
         <h3>✅ The KMZ Guarantee</h3>
-        <p>If our average rate doesn't clear your target across the 3 deposit-unlocked loads, your $100 is refunded — no questions. And the first 2 loads never cost you anything to find out, deposit or no deposit.</p>
+        <p>There's no deposit, so there's nothing to refund — that's the point. All 5 loads run at zero cost and zero commission no matter what. If it's not working for you, you walk away having risked nothing.</p>
       </div>
       <div class="inline-cta">
-        <a href="https://calendly.com/dispatch-kmzdispatch/30min">Claim Your First 2 Free Loads →</a>
+        <a href="https://calendly.com/dispatch-kmzdispatch/30min">Claim Your 5 Free Loads →</a>
         <span class="note">No deposit today. No card. Just your MC number and 30 minutes.</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CH 07: HOW TO START -->
-<div class="chapter-wrap">
-  <div class="page">
-    <div class="chapter-card section">
-      <div class="chapter-label"><span class="num">07</span> From Email To First Load</div>
-      <div class="emoji-label">📋 From first contact to first load</div>
-      <h2>Simple. Fast. <span class="accent">No surprises.</span></h2>
-      <div class="payment-flow">
-        <div class="flow-steps">
-          <div class="flow-step">
-            <div class="flow-num">1</div>
-            <div class="flow-content">
-              <strong>Send your details</strong>
-              <span>Email your MC#, truck type, and home state to dispatch@kmzdispatch.com — or book directly below.</span>
-            </div>
-          </div>
-          <div class="flow-step">
-            <div class="flow-num">2</div>
-            <div class="flow-content">
-              <strong>Book a 30-minute call</strong>
-              <span>We set your cost-per-mile, target rate, and lane plan.</span>
-            </div>
-          </div>
-          <div class="flow-step">
-            <div class="flow-num">3</div>
-            <div class="flow-content">
-              <strong>Sign & dispatch — no deposit yet</strong>
-              <span>Sign the one-page agreement and we find your first load within 24 hours. Your first 2 loads run at zero cost and zero commission.</span>
-            </div>
-          </div>
-          <div class="flow-step">
-            <div class="flow-num">4</div>
-            <div class="flow-content">
-              <strong>Like what you see?</strong>
-              <span>Anytime after load 2, pay the $100 deposit to unlock 3 more zero-commission loads — refunded if we don't hit your target rate.</span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -538,12 +547,12 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
           <div class="faq-a">No. There's no lock-in contract at any point — during the trial or after. Continue month to month, or stop whenever it stops making sense.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">What if I don't like it after the first 2 loads?</div>
-          <div class="faq-a">Walk away. You never paid a deposit for those 2 loads, so there's nothing to refund — and no hard feelings either way.</div>
+          <div class="faq-q">What if I don't like it partway through the 5 free loads?</div>
+          <div class="faq-a">Walk away anytime. There's no deposit and nothing owed, so there's nothing to refund — no hard feelings either way.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">What if I use all 5 trial loads and decide not to continue?</div>
-          <div class="faq-a">You keep everything you earned — roughly $10,000 in gross revenue across 5 loads. We keep the $100 as a service fee. That's the full worst case.</div>
+          <div class="faq-q">What if I use all 5 free loads and decide not to continue?</div>
+          <div class="faq-a">You keep everything you earned — roughly $10,000 in gross revenue across 5 loads — and it cost you nothing. If you don't continue, that's the full worst case: zero bill, ever.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">How fast do I get my first load?</div>
@@ -559,43 +568,12 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
         </div>
         <div class="faq-item">
           <div class="faq-q">How do you actually calculate my target rate?</div>
-          <div class="faq-a">Real cost-per-mile math grounded in route and lane data — fuel, insurance, fixed costs, and deadhead risk mapped per lane, not a flat industry-average guess. See the Method section above.</div>
+          <div class="faq-a">Real cost-per-mile math grounded in route and lane data — fuel, insurance, fixed costs, and deadhead risk mapped per lane, not a flat industry-average guess. Same background covered in the intro section at the top of this page.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Who am I actually working with?</div>
           <div class="faq-a">One dispatcher — me, Slouma — not a call center or a rotating team. See the intro section at the top of this page.</div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CH 09: TWO PATHS -->
-<div class="band band-green">
-  <div class="page">
-    <div class="section-pad section">
-      <div class="chapter-label"><span class="num">09</span> Two Roads From Here</div>
-      <div class="emoji-label">⚡ Two ways this goes from here</div>
-      <h2>Keep guessing. <span class="accent">Or know your number before you say yes.</span></h2>
-      <div class="paths-compare">
-        <div class="compare-col stay">
-          <h3>❌ Stay solo</h3>
-          <div class="compare-item">You keep pricing lanes by gut feel, not real cost per mile.</div>
-          <div class="compare-item">You keep taking the first number a broker offers.</div>
-          <div class="compare-item">You keep wondering if a load even clears your fuel cost.</div>
-          <div class="compare-item">You keep doing the dispatcher's job on top of the driver's job.</div>
-        </div>
-        <div class="compare-col join">
-          <h3>✅ Work with KMZ</h3>
-          <div class="compare-item">You know your real cost per mile before you accept a load.</div>
-          <div class="compare-item">Every load is negotiated above your target rate.</div>
-          <div class="compare-item">Your first 2 loads cost you nothing to test it.</div>
-          <div class="compare-item">You drive. I handle the loads, the rate, and the paperwork.</div>
-        </div>
-      </div>
-      <div class="inline-cta">
-        <a href="https://calendly.com/dispatch-kmzdispatch/30min">Start My Free Trial →</a>
-        <span class="note">🟡 Onboarding spots are limited — one dispatcher, real capacity</span>
       </div>
     </div>
   </div>
@@ -610,10 +588,10 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
         <h2>Ready to run profitable? 🚀</h2>
         <p class="cta-sub">Send your MC number, truck type, and home state — or book your call now to confirm a spot.</p>
         <div class="recap-list">
-          <div class="recap-item"><div class="recap-check">✓</div><span>First 2 loads — completely free, no deposit</span></div>
+          <div class="recap-item"><div class="recap-check">✓</div><span>First 5 loads — completely free, zero deposit, zero commission</span></div>
           <div class="recap-item"><div class="recap-check">✓</div><span>Real cost-per-mile & target rate, every lane</span></div>
           <div class="recap-item"><div class="recap-check">✓</div><span>Every load negotiated above your target rate</span></div>
-          <div class="recap-item"><div class="recap-check">✓</div><span>$100 refunded if we miss your target rate</span></div>
+          <div class="recap-item"><div class="recap-check">✓</div><span>Continue only if it's working — no bill if it's not</span></div>
           <div class="recap-item"><div class="recap-check">✓</div><span>One dispatcher — me — not a call center</span></div>
           <div class="recap-item"><div class="recap-check">✓</div><span>No lock-in contract, ever</span></div>
         </div>
