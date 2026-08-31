@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,9 +73,13 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
 .recap-item { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.5; }
 .recap-check { width: 18px; height: 18px; border-radius: 50%; background: var(--green); color: white; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
 
-.top-banner { background: var(--blue-dark); color: white; text-align: center; padding: 12px 20px; font-size: 14px; font-weight: 500; position: sticky; top: 0; z-index: 999; line-height: 1.5; }
+.top-banner { background: var(--blue-dark); color: white; font-size: 14px; font-weight: 500; position: sticky; top: 0; z-index: 999; overflow: hidden; white-space: nowrap; padding: 12px 0; }
 .top-banner strong { font-weight: 700; }
-.top-banner .sub { opacity: 0.75; font-size: 13px; display: block; margin-top: 2px; }
+.ticker-track { display: inline-flex; width: max-content; animation: ticker-scroll 28s linear infinite; }
+.ticker-item { display: inline-flex; align-items: center; white-space: nowrap; padding: 0 28px; }
+.ticker-dot { opacity: 0.55; margin-right: 28px; }
+@keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
 
 .page { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
 
@@ -217,6 +220,13 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
 
 .doc-footer { text-align: center; font-size: 13px; color: var(--ink-3); padding: 40px 0 60px; line-height: 1.8; }
 
+/* BRAND FOOTER (KMZ DISPATCH™ / by KOMERZ™ credit band) */
+.brand-footer { background: rgb(3,3,3); padding: 36px 0 28px; text-align: center; }
+.brand-footer .bf-product { font-family: 'Geist', sans-serif; font-size: 22px; font-weight: 900; color: #FFFFFF; letter-spacing: 0.02em; }
+.brand-footer .bf-by { font-family: 'Geist', sans-serif; font-size: 20px; margin-top: 10px; color: rgba(255,255,255,0.85); }
+.brand-footer .bf-by strong { font-weight: 700; font-style: italic; color: #7B7FE8; }
+.brand-footer .bf-legal { max-width: 640px; margin: 22px auto 0; font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.4); }
+
 /* FOUNDER */
 .founder-card { display: grid; grid-template-columns: 140px 1fr; gap: 28px; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 32px; margin-top: 24px; }
 @media(max-width:560px){ .founder-card { grid-template-columns: 1fr; text-align: center; } }
@@ -257,8 +267,20 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
 <body>
 
 <div class="top-banner">
-  ⚡ We only take on a limited number of new carrier partners at a time — <strong>your first 5 loads are completely free — no deposit, ever</strong>
-  <span class="sub">Zero cost. Zero commission. Zero risk · no lock-in contracts</span>
+  <div class="ticker-track">
+    <span class="ticker-item">⚡ <strong>Limited carrier partner spots</strong></span>
+    <span class="ticker-item">🟢 <strong>First 5 loads — completely free</strong></span>
+    <span class="ticker-item">$0 <strong>deposit, ever</strong></span>
+    <span class="ticker-item">0% <strong>commission on those 5 loads</strong></span>
+    <span class="ticker-item">24h <strong>to your first load</strong></span>
+    <span class="ticker-item">🔒 <strong>No lock-in contracts</strong></span>
+    <span class="ticker-item">⚡ <strong>Limited carrier partner spots</strong></span>
+    <span class="ticker-item">🟢 <strong>First 5 loads — completely free</strong></span>
+    <span class="ticker-item">$0 <strong>deposit, ever</strong></span>
+    <span class="ticker-item">0% <strong>commission on those 5 loads</strong></span>
+    <span class="ticker-item">24h <strong>to your first load</strong></span>
+    <span class="ticker-item">🔒 <strong>No lock-in contracts</strong></span>
+  </div>
 </div>
 
 <div class="progress-rail" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
@@ -599,11 +621,16 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
         <p class="cta-note">Book a call → calendly.com/dispatch-kmzdispatch/30min &nbsp;·&nbsp; dispatch@kmzdispatch.com</p>
       </div>
     </div>
-    <div class="doc-footer">
-      KMZ Dispatch is a freight dispatch service operated by KOMERZ — Société de Commerce International<br>
-      Djerba, Tunisia &nbsp;·&nbsp; dispatch@kmzdispatch.com &nbsp;·&nbsp; kmzdispatch.com<br>
-      All commissions and service fees invoiced through KOMERZ International
-    </div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="bf-product">KMZ DISPATCH™</div>
+  <div class="bf-by"><strong>by KOMERZ™</strong> — Your trading partner in Tunisia</div>
+  <div class="bf-legal">
+    KMZ Dispatch is a freight dispatch service operated by KOMERZ — Société de Commerce International<br>
+    Djerba, Tunisia &nbsp;·&nbsp; dispatch@kmzdispatch.com &nbsp;·&nbsp; kmzdispatch.com<br>
+    All commissions and service fees invoiced through KOMERZ International
   </div>
 </div>
 
