@@ -112,14 +112,15 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
 .chapter-label .num { opacity: 0.6; font-weight: 700; margin-right: 6px; }
 
 /* HERO */
-.hero { padding: 60px 0 40px; }
-.hero-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--gold-light); color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 16px; border-radius: 20px; margin-bottom: 20px; }
+.hero { padding: 60px 0 40px; text-align: center; }
+.hero-brand { font-family: 'Geist', sans-serif; font-size: clamp(22px, 4vw, 26px); font-weight: 900; color: var(--ink); letter-spacing: 0.01em; margin-bottom: 18px; }
+.hero-tag { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: 1.5px solid var(--gold); color: var(--gold); font-size: 14px; font-weight: 700; letter-spacing: 0.02em; padding: 9px 20px; border-radius: 24px; margin-bottom: 24px; }
 .hero-audience { font-size: 17px; font-weight: 700; color: var(--ink-2); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.04em; }
 .hero h1 { font-family: 'Geist', sans-serif; font-size: clamp(36px, 7vw, 56px); font-weight: 900; line-height: 1.1; color: var(--ink); margin-bottom: 22px; letter-spacing: -0.02em; }
 .hero h1 .accent { color: var(--gold); }
 .hero-proof { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-light); color: var(--gold); font-size: 15px; font-weight: 700; padding: 9px 18px; border-radius: 20px; margin: 4px 0 22px; }
-.hero-lead { font-size: 20px; color: var(--ink-2); line-height: 1.6; max-width: 620px; margin-bottom: 20px; }
-.hero-step { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 36px; display: flex; align-items: center; gap: 8px; }
+.hero-lead { font-size: 20px; color: var(--ink-2); line-height: 1.6; max-width: 620px; margin: 0 auto 20px; }
+.hero-step { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 36px; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 @media(max-width:560px){ .hero-stats { grid-template-columns: repeat(2,1fr); } }
 .stat-box { background: rgba(0,0,0,0.35); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 18px 14px; text-align: center; }
@@ -294,8 +295,8 @@ body { font-family: 'Geist', sans-serif; background: var(--surface); color: var(
 <div class="band hero-band">
   <div class="page">
     <div class="hero">
-      <div class="hero-tag">🚛 KMZ Dispatch™ — Carrier Partner Offer</div>
-      <div class="hero-audience">For Owner-Operators In Their First Year With A New MC</div>
+      <div class="hero-brand">KMZ DISPATCH™</div>
+      <div class="hero-tag">🚛 For Owner-Operators In Their First Year With A New MC</div>
       <h1>Know your real cost per mile, negotiate every rate above it, <span class="accent">AND run your first 5 loads completely free.</span></h1>
       <p class="hero-lead">Stop guessing what a load is worth. Get the exact math before you accept anything — negotiated rates, zero commission, and zero deposit on your first 5 loads. Here's exactly how it works, no video required.</p>
       <div class="hero-step">👉 Step 1 — Read the 2-minute breakdown below</div>
